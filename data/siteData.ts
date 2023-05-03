@@ -10,7 +10,7 @@ const siteData = {
   // socialBanner: 'https://nextjs-notion-blog-starter.vercel.app/preview/1.jpg',
   github: 'https://github.com/beiryu',
   twitter: 'https://github.com/beiryu',
-  // websiteUrl: 'https://nextjs-notion-blog-starter.vercel.app',
+  websiteUrl: 'https://khanhdinh.tech',
   linkedin: 'https://www.linkedin.com/in/khanh-ndinh/'
 };
 
