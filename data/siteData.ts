@@ -2,7 +2,7 @@ const siteData = {
   title: 'Beiryu Blog',
   author: 'Beiryu Blog',
   headerTitle: 'Welcome To Beiryu Blog',
-  profileUrl: '/nextjs-logo.png',
+  profileUrl: '/logo/logo-3.png',
   headerDescription: 'Develop software with minimal effort',
   footerText: '© All rights reserved',
   language: 'en-us',
