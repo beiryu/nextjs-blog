@@ -9,6 +9,8 @@ export function MetaHead(props) {
   return (
     <Head>
       <title>{titleName}</title>
+      <link rel="icon" type="image/x-icon" href="/logos/logo-secondary.png"></link>
+
       <meta name="robots" content="follow, index" />
       <meta content={description || titleName} name="description" />
       <meta property="og:site_name" content={siteData.author} />
