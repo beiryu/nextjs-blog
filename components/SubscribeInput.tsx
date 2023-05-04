@@ -72,9 +72,7 @@ export default function SubscribeInput() {
           🎉 Give me more confetti
         </div>
       ) : (
-        <div className="mt-2 text-sm text-gray-500">
-          Be the first to know when the blog is published
-        </div>
+        <div className="mt-2 text-sm text-gray-500"></div>
       )}
     </>
   );
