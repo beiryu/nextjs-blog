@@ -84,7 +84,7 @@ export function renderBlocks(block) {
       return (
         <figure className="mt-0">
           <img
-            className="rounded-lg aspect-video"
+            className="rounded-lg"
             src={src}
             placeholder="blur"
             alt={caption ? caption : 'A visual depiction of what is being written about'}
