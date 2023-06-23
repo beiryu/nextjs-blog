@@ -5,6 +5,7 @@ import AnchorLink from 'components/notionBlocks/AnchorLink';
 import CodeBlock from 'components/notionBlocks/CodeBlock';
 import Callout from 'components/notionBlocks/Callout';
 import YoutubeEmbed from 'components/notionBlocks/YoutubeEmbed';
+import { Bookmark } from './Bookmark';
 
 export function renderBlocks(block) {
   const { type, id } = block;
@@ -123,6 +124,10 @@ export function renderBlocks(block) {
       return (
         <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
       );
+    case 'bookmark':
+      return (
+        <Bookmark url={value.url}></Bookmark> 
+      ); 
     default:
       return `❌ Unsupported block (${
         type === 'unsupported' ? 'unsupported by Notion API' : type

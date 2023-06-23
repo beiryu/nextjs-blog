@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import isValidEmail from 'utils/isValidEmail';
-import ConfettiCanvas from './ConfettiCanvas';
+import ConfettiCanvas from '../common/ConfettiCanvas';
 
 const CONVERTKIT_API = '/api/subscribe-convertkit';
 

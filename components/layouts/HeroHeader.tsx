@@ -1,6 +1,6 @@
 import siteData from 'data/siteData';
 import Container from './Container';
-import SubscribeInput from './SubscribeInput';
+import SubscribeInput from '../subscribes/SubscribeInput';
 
 const FORM_ID = process.env.NEXT_PUBLIC_CONVERTKIT_FORM_ID;
 const API_KEY = process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY;
