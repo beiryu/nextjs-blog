@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getAllArticles, getArticlePage, getArticlePageData } from 'utils/notion';
 import { Layout } from 'layouts/Layout';
 import Image from 'next/image';
-import { renderBlocks } from 'components/notionBlocks/renderBlocks';
+import { renderBlocks } from 'components/notion/blocks/renderBlocks';
 import getLocalizedDate from 'utils/getLocalizedDate';
 import slugify from 'slugify';
 import siteData from 'data/siteData';

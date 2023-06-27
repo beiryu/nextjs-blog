@@ -1,4 +1,4 @@
-import OgTemplate from 'components/OgTemplate';
+import OgTemplate from 'components/common/OgTemplate';
 import { withOGImage } from 'next-api-og-image';
 
 export default withOGImage({

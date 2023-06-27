@@ -39,7 +39,7 @@ const mapArticleProperties = article => {
       properties?.categories?.multi_select.map((category: any) => category.name) || [],
     author: {
       name: properties.Author.created_by.name || null,
-      imageUrl: properties.Author.created_by.avatar_url || null 
+      imageUrl: properties.Author.created_by.avatar_url || null
     },
     coverImage:
       properties?.coverImage?.files[0]?.file?.url ||
@@ -148,10 +148,28 @@ export const getArticlePageData = async (page: any, slug: any, databaseId) => {
     content = [...content, ...blocks.results];
   }
 
+  await Promise.all(
+    content.map(async block => {
+      await getContentRecursion(block);
+      return block;
+    })
+  );
+
   return {
     ...mapArticleProperties(page),
     content,
     slug,
     moreArticles
   };
+};
+
+const getContentRecursion = async block => {
+  if (block.has_children) {
+    let res = await notion.blocks.children.list({
+      block_id: block.id
+    });
+    block.children = res.results;
+    let promises = block.children.map(getContentRecursion);
+    await Promise.all(promises);
+  }
 };

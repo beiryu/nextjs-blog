@@ -4,8 +4,8 @@ import { useOgp } from 'hooks/useOgp';
 
 export type OgpData = {
   pageUrl: string;
-  title: string; 
-  description: string; 
+  title: string;
+  description: string;
   faviconUrl: string;
   ogImgUrl: string;
 };
@@ -22,9 +22,9 @@ export const BookmarkViewDesktop = ({ ogp }: BookmarkViewProps) => {
 
   return (
     <a href={pageUrl} target="_blank" rel="noreferrer" className="hidden md:block">
-      <article className="flex justify-between h-40 rounded border border-gray-400 border-solid">
+      <article className="flex justify-between h-40 rounded-lg border border-opacity-40 border-solid">
         <div className={`flex flex-col justify-between p-5  hover:bg-gray-100 ${w}`}>
-          <h3 className="text-2xl truncate">{title}</h3>
+          <h3 className="text-xl truncate">{title}</h3>
           <p className="overflow-hidden h-12 text-base text-gray-500">{description}</p>
           <div className="flex items-center">
             {faviconUrl && <img src={faviconUrl} className="h-6" alt="" />}
@@ -32,7 +32,7 @@ export const BookmarkViewDesktop = ({ ogp }: BookmarkViewProps) => {
           </div>
         </div>
         {ogImgUrl && (
-          <div className="w-2/5 h-full rounded">
+          <div className="w-2/5 h-full rounded-lg overflow-hidden">
             <img src={ogImgUrl} className="object-cover w-full h-full" alt="" />
           </div>
         )}
@@ -49,9 +49,9 @@ export const BookmarkViewMobile = ({ ogp }: BookmarkViewProps) => {
 
   return (
     <a href={pageUrl} target="_blank" rel="noreferrer" className="md:hidden">
-      <article className="flex flex-col justify-between rounded border border-gray-400 border-solid">
+      <article className="flex flex-col justify-between rounded-lg border border-opacity-40 border-solid">
         {ogImgUrl && (
-          <div className="object-cover w-full h-40 rounded">
+          <div className="object-cover w-full h-40 rounded-lg overflow-hidden">
             <img src={ogImgUrl} className="object-cover w-full h-full" alt="" />
           </div>
         )}
@@ -78,13 +78,10 @@ const BookmarkView = ({ ogp }: BookmarkViewProps) => (
   </>
 );
 
-export const Bookmark = ({ url }: { url: string }) => {
+export default function Bookmark({ url }: { url: string }) {
   const { data, error } = useOgp(url);
-  console.log(data);
-  // for debug
-  if (!error) console.log(error);
 
   if (!data) return <Loading />;
 
   return <BookmarkView ogp={data} />;
-};
+}
