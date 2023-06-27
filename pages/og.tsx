@@ -1,4 +1,4 @@
-import OgTemplate from 'components/OgTemplate';
+import OgTemplate from 'components/common/OgTemplate';
 
 export default function Og() {
   <OgTemplate

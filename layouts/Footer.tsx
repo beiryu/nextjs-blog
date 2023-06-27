@@ -1,5 +1,5 @@
-import Container from 'components/Container';
-import Socials from 'components/Socials';
+import Socials from 'components/common/Socials';
+import Container from 'components/layouts/Container';
 import siteData from 'data/siteData';
 
 export default function Footer() {

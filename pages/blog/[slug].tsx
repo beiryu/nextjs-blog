@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { getAllArticles, getArticlePage, getArticlePageData } from 'utils/notion';
 import { Layout } from 'layouts/Layout';
 import Image from 'next/image';
-import { renderBlocks } from 'components/notionBlocks/renderBlocks';
+import { renderBlocks } from 'components/notion/blocks/renderBlocks';
 import getLocalizedDate from 'utils/getLocalizedDate';
-import Container from 'components/Container';
 import slugify from 'slugify';
-import ArticleList from 'components/ArticleList';
 import siteData from 'data/siteData';
+import Container from 'components/layouts/Container';
+import ArticleList from 'components/articles/ArticleList';
 
 const ArticlePage = ({
   content,

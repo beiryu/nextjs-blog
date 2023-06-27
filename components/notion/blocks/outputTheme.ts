@@ -1,7 +1,7 @@
+import { PrismTheme } from 'prism-react-renderer';
 // @flow
 // Converted automatically using ./tools/themeFromVsCode
 
-import { PrismTheme } from 'prism-react-renderer';
 
 export const theme: PrismTheme = {
   plain: {

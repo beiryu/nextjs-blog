@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
-import Image from 'next/image';
-import Text from 'components/notionBlocks/Text';
-import AnchorLink from 'components/notionBlocks/AnchorLink';
-import CodeBlock from 'components/notionBlocks/CodeBlock';
-import Callout from 'components/notionBlocks/Callout';
-import YoutubeEmbed from 'components/notionBlocks/YoutubeEmbed';
+import Text from 'components/notion/blocks/Text';
+import AnchorLink from 'components/notion/blocks/AnchorLink';
+import CodeBlock from 'components/notion/blocks/CodeBlock';
+import Callout from 'components/notion/blocks/Callout';
+import YoutubeEmbed from 'components/notion/blocks/YoutubeEmbed';
+import Bookmark from 'components/notion/blocks/Bookmark';
+import File from 'components/notion/blocks/File';
 
 export function renderBlocks(block) {
   const { type, id } = block;
@@ -44,9 +45,16 @@ export function renderBlocks(block) {
     case 'bulleted_list_item':
     case 'numbered_list_item':
       return (
-        <li className="text-lg">
-          <Text text={value.text} />
-        </li>
+        <>
+          <li className="text-lg">
+            <Text text={value.text} />
+          </li>
+          <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">
+            {block.children?.map(block => (
+              <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
+            ))}
+          </div>
+        </>
       );
     case 'to_do':
       return (
@@ -71,7 +79,7 @@ export function renderBlocks(block) {
           <summary>
             <Text text={value.text} />
           </summary>
-          {value.children?.map(block => (
+          {block.children?.map(block => (
             <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
           ))}
         </details>
@@ -123,9 +131,15 @@ export function renderBlocks(block) {
       return (
         <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
       );
+    case 'bookmark':
+      return <Bookmark url={value.url}></Bookmark>;
+    case 'file':
+      return <File file={value} />
     default:
-      return `❌ Unsupported block (${
-        type === 'unsupported' ? 'unsupported by Notion API' : type
-      })`;
+      if (process.env.NODE_ENV === 'development') {
+        return `❌ Unsupported block (${
+          type === 'unsupported' ? 'unsupported by Notion API' : type
+        })`;
+      }
   }
 }

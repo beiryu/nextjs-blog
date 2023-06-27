@@ -1,7 +1,7 @@
-import Subscribe from 'components/Subscribe';
 import Footer from './Footer';
 import Header from './Navbar';
 import { MetaHead } from './MetaHead';
+import Subscribe from 'components/subscribes/Subscribe';
 
 const FORM_ID = process.env.NEXT_PUBLIC_CONVERTKIT_FORM_ID;
 const API_KEY = process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY;
