@@ -7,7 +7,6 @@ const siteData = {
   footerText: '© All rights reserved',
   language: 'en-us',
   locale: 'en-US',
-  // socialBanner: 'https://nextjs-notion-blog-starter.vercel.app/preview/1.jpg',
   github: 'https://github.com/beiryu',
   twitter: 'https://github.com/beiryu',
   websiteUrl: 'https://khanhdinh.tech',

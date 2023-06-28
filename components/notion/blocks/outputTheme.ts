@@ -2,7 +2,6 @@ import { PrismTheme } from 'prism-react-renderer';
 // @flow
 // Converted automatically using ./tools/themeFromVsCode
 
-
 export const theme: PrismTheme = {
   plain: {
     color: '#abb2bf',

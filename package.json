@@ -1,9 +1,7 @@
 {
   "private": true,
   "description": "Notion-powered blog starter with Nextjs and Tailwind",
-  "repository": "https://github.com/tuanphungcz/nextjs-notion-blog-starter",
-  "homepage": "https://nextjs-notion-blog-starter.vercel.app/",
-  "author": "Tuan Phung <tuan@phung.cz>",
+  "author": "Khanh Dinh <khanh.dinh@netpower.no>",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",

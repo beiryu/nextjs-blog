@@ -1,5 +1,5 @@
-import { OgpData } from 'components/notion/blocks/Bookmark';
 import useSWR from 'swr';
+import { OgpData } from 'types/opg-data.type';
 
 export function useOgp(url: string) {
   const fetcher = (path: string) => fetch(path).then(res => res.json());

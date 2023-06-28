@@ -129,7 +129,7 @@ export const getArticlePageData = async (page: any, slug: any, databaseId) => {
   let content = [];
   let title = '';
 
-  title = page.properties.title.title[0].plain_text;
+  title = page?.properties.title.title[0].plain_text;
 
   const moreArticles: any = await getMoreArticlesToSuggest(databaseId, title);
 

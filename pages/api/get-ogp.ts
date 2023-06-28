@@ -1,10 +1,8 @@
 import { JSDOM } from 'jsdom';
-
-import { OgpData } from 'components/notion/blocks/Bookmark';
-
 import type { NextApiRequest, NextApiResponse } from 'next';
 import console from 'console';
 import { isImageEndWithFormat } from 'utils/image';
+import { OgpData } from 'types/opg-data.type';
 
 async function getOgp(req: NextApiRequest, res: NextApiResponse<OgpData>) {
   // Receive and encode URL information from query parameters
@@ -70,7 +68,7 @@ async function getOgp(req: NextApiRequest, res: NextApiResponse<OgpData>) {
 
         return ogpData;
       });
-    
+
     // Extract and return title, description, ogImgUrl, faviconUrl, pageeUrl from returned data
     const { pageUrl, title, description, faviconUrl, ogImgUrl } = response;
 
@@ -84,7 +82,7 @@ async function getOgp(req: NextApiRequest, res: NextApiResponse<OgpData>) {
   } catch (error) {
     // Make sure that OgpDate type information is returned even when an error occurs
     res.status(200).json({
-      title: 'Sorry! It looks like I didn\'t get it well🙇‍♂️',
+      title: "Sorry! It looks like I didn't get it well🙇‍♂️",
       description: '',
       faviconUrl: '',
       ogImgUrl: '',

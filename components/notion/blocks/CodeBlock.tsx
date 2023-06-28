@@ -20,7 +20,7 @@ const calculateLinesToHighlight = meta => {
   }
   const lineNumbers = RE.exec(meta)[1]
     .split(`,`)
-    .map(v => v.split(`-`).map(x =>parseInt(x, 10)));
+    .map(v => v.split(`-`).map(x => parseInt(x, 10)));
   return index => {
     const lineNumber = index + 1;
     const inRange = lineNumbers.some(([start, end]) =>

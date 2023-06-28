@@ -1,14 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Loading } from 'components/common/Loading';
 import { useOgp } from 'hooks/useOgp';
-
-export type OgpData = {
-  pageUrl: string;
-  title: string;
-  description: string;
-  faviconUrl: string;
-  ogImgUrl: string;
-};
+import { OgpData } from 'types/opg-data.type';
 
 interface BookmarkViewProps {
   ogp: OgpData;
@@ -32,7 +25,7 @@ export const BookmarkViewDesktop = ({ ogp }: BookmarkViewProps) => {
           </div>
         </div>
         {ogImgUrl && (
-          <div className="w-2/5 h-full rounded-lg overflow-hidden">
+          <div className="w-2/5 h-full rounded-r-lg overflow-hidden">
             <img src={ogImgUrl} className="object-cover w-full h-full" alt="" />
           </div>
         )}
@@ -80,8 +73,6 @@ const BookmarkView = ({ ogp }: BookmarkViewProps) => (
 
 export default function Bookmark({ url }: { url: string }) {
   const { data, error } = useOgp(url);
-
-  if (!data) return <Loading />;
-
-  return <BookmarkView ogp={data} />;
+  if (error) return;
+  return data ? <BookmarkView ogp={data} /> : <Loading />;
 }

@@ -79,9 +79,11 @@ export function renderBlocks(block) {
           <summary>
             <Text text={value.text} />
           </summary>
-          {block.children?.map(block => (
-            <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
-          ))}
+          <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">
+            {block.children?.map(block => (
+              <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
+            ))}
+          </div>
         </details>
       );
     case 'child_page':
@@ -134,7 +136,7 @@ export function renderBlocks(block) {
     case 'bookmark':
       return <Bookmark url={value.url}></Bookmark>;
     case 'file':
-      return <File file={value} />
+      return <File file={value} />;
     default:
       if (process.env.NODE_ENV === 'development') {
         return `❌ Unsupported block (${
