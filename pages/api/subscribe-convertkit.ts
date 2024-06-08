@@ -1,4 +1,5 @@
-import isValidEmail from 'utils/isValidEmail';
+import { CONFIGS } from 'config';
+import isValidEmail from 'utils/validations';
 
 const subscribeConvertkit = async (req, res) => {
   const { email } = JSON.parse(req.body);
@@ -14,13 +15,10 @@ const subscribeConvertkit = async (req, res) => {
   }
 
   try {
-    const FORM_ID = process.env.NEXT_PUBLIC_CONVERTKIT_FORM_ID;
-    const API_KEY = process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY;
-
     const response = await fetch(
-      `https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`,
+      `https://api.convertkit.com/v3/forms/${CONFIGS.convertKitFromID}/subscribe`,
       {
-        body: JSON.stringify({ email, api_key: API_KEY }),
+        body: JSON.stringify({ email, api_key: CONFIGS.convertKitApiKey }),
         headers: { 'Content-Type': 'application/json' },
         method: 'POST'
       }

@@ -1,14 +1,16 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
-import { getAllArticles, getArticlePage, getArticlePageData } from 'utils/notion';
+import { getArticlePage, getArticlePageData } from 'utils/notion';
 import { Layout } from 'layouts/Layout';
 import Image from 'next/image';
 import { renderBlocks } from 'components/notion/blocks/renderBlocks';
-import getLocalizedDate from 'utils/getLocalizedDate';
 import slugify from 'slugify';
 import siteData from 'data/siteData';
 import Container from 'components/layouts/Container';
 import ArticleList from 'components/articles/ArticleList';
+import { getAllArticles } from 'services/notion';
+import { CONFIGS } from 'config';
+import { getLocalizedDate } from 'utils/datetime';
 
 const ArticlePage = ({
   content,
@@ -34,7 +36,7 @@ const ArticlePage = ({
         title={title}
         description={summary}
         imageUrl={ogImage}
-        date={new Date(publishedDate).toISOString()}
+        date={publishedDate ? new Date(publishedDate).toISOString() : ''}
         ogUrl={`/blog/${slug}`}
       >
         <div>
@@ -57,6 +59,8 @@ const ArticlePage = ({
               className="object-cover w-full rounded-xl aspect-video"
               src={coverImage}
               alt={''}
+              width={500}
+              height={500}
             />
           </div>
           <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">
@@ -85,7 +89,7 @@ const ArticlePage = ({
 
 export const getStaticPaths = async () => {
   const paths = [];
-  const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
+  const data: any = await getAllArticles(CONFIGS.blogDatabaseId);
 
   data.forEach(result => {
     if (result.object === 'page') {
@@ -104,10 +108,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { slug } }) => {
-  const data = await getAllArticles(process.env.BLOG_DATABASE_ID);
+  const data = await getAllArticles(CONFIGS.blogDatabaseId);
 
   const page = getArticlePage(data, slug);
-  const result = await getArticlePageData(page, slug, process.env.BLOG_DATABASE_ID);
+  const result = await getArticlePageData(page, slug, CONFIGS.blogDatabaseId);
 
   return {
     props: result,

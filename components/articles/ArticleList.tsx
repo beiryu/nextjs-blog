@@ -1,4 +1,4 @@
-import { Article } from 'utils/types';
+import { Article } from 'types/article.type';
 import ArticleCard from './ArticleCard';
 
 type Props = {

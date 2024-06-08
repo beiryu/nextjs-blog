@@ -1,35 +1,8 @@
-import { Client, LogLevel } from '@notionhq/client';
+import { getBlocks, getMoreArticlesToSuggest } from 'services/notion';
 import slugify from 'slugify';
+import { Article } from 'types/article.type';
 
-const notion = new Client({
-  auth: process.env.NOTION_SECRET
-});
-
-export const getAllArticles = async databaseId => {
-  const response = await notion.databases.query({
-    database_id: databaseId,
-    filter: {
-      or: [
-        {
-          property: 'status',
-          select: {
-            equals: '✅ Published'
-          }
-        }
-      ]
-    },
-    sorts: [
-      {
-        property: 'published',
-        direction: 'descending'
-      }
-    ]
-  });
-
-  return response.results;
-};
-
-const mapArticleProperties = article => {
+export const mapArticleProperties = (article: any): Article => {
   const { id, properties } = article;
 
   return {
@@ -37,15 +10,11 @@ const mapArticleProperties = article => {
     title: properties?.title.title[0].plain_text || '',
     categories:
       properties?.categories?.multi_select.map((category: any) => category.name) || [],
-    author: {
-      name: properties.Author.created_by.name || null,
-      imageUrl: properties.Author.created_by.avatar_url || null
-    },
     coverImage:
       properties?.coverImage?.files[0]?.file?.url ||
       properties?.coverImage?.files[0]?.external?.url ||
       '/image-background.png',
-    publishedDate: properties.published?.date?.start,
+    publishedDate: properties.published?.date?.start ?? '',
     summary: properties?.summary.rich_text[0]?.plain_text ?? ''
   };
 };
@@ -69,34 +38,6 @@ export const convertToArticleList = (tableData: any) => {
   return { articles, categories };
 };
 
-export const getMoreArticlesToSuggest = async (databaseId, currentArticleTitle) => {
-  const response = await notion.databases.query({
-    database_id: databaseId,
-    filter: {
-      and: [
-        {
-          property: 'status',
-          select: {
-            equals: '✅ Published'
-          }
-        },
-        {
-          property: 'title',
-          text: {
-            does_not_equal: currentArticleTitle
-          }
-        }
-      ]
-    }
-  });
-
-  const moreArticles = response.results.map((article: any) =>
-    mapArticleProperties(article)
-  );
-
-  return shuffleArray(moreArticles).slice(0, 2);
-};
-
 export const getArticlePage = (data, slug) => {
   const response = data.find(result => {
     if (result.object === 'page') {
@@ -111,20 +52,6 @@ export const getArticlePage = (data, slug) => {
   return response;
 };
 
-export function shuffleArray(array: Array<any>) {
-  let currentIndex = array.length,
-    randomIndex;
-  while (currentIndex != 0) {
-    // Pick a random element
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-  }
-  return array;
-}
-
 export const getArticlePageData = async (page: any, slug: any, databaseId) => {
   let content = [];
   let title = '';
@@ -133,18 +60,12 @@ export const getArticlePageData = async (page: any, slug: any, databaseId) => {
 
   const moreArticles: any = await getMoreArticlesToSuggest(databaseId, title);
 
-  let blocks = await notion.blocks.children.list({
-    block_id: page.id
-  });
+  let blocks = await getBlocks(page.id);
 
   content = [...blocks.results];
 
   while (blocks.has_more) {
-    blocks = await notion.blocks.children.list({
-      block_id: page.id,
-      start_cursor: blocks.next_cursor
-    });
-
+    blocks = await getBlocks(page.id, blocks.next_cursor);
     content = [...content, ...blocks.results];
   }
 
@@ -163,13 +84,23 @@ export const getArticlePageData = async (page: any, slug: any, databaseId) => {
   };
 };
 
-const getContentRecursion = async block => {
+export const getContentRecursion = async block => {
   if (block.has_children) {
-    let res = await notion.blocks.children.list({
-      block_id: block.id
-    });
+    let res = await getBlocks(block.id);
     block.children = res.results;
     let promises = block.children.map(getContentRecursion);
     await Promise.all(promises);
   }
+};
+
+export const filterArticles = (articles, selectedTag): Article[] => {
+  return articles
+    .filter(article => article.publishedDate)
+    .sort((a, b) => Number(new Date(b.publishedDate)))
+    .filter(article => {
+      if (selectedTag === null) {
+        return true;
+      }
+      return article.categories.includes(selectedTag);
+    });
 };

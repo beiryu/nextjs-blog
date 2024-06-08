@@ -2,9 +2,7 @@ import Footer from './Footer';
 import Header from './Navbar';
 import { MetaHead } from './MetaHead';
 import Subscribe from 'components/subscribes/Subscribe';
-
-const FORM_ID = process.env.NEXT_PUBLIC_CONVERTKIT_FORM_ID;
-const API_KEY = process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY;
+import { CONFIGS } from 'config';
 
 export function Layout(props) {
   const { children, date, imageUrl, title, description, ogUrl } = props;
@@ -22,7 +20,7 @@ export function Layout(props) {
       <MetaHead {...metaHeadProps} />
       <Header />
       <div className="pt-14">{children}</div>
-      {FORM_ID && API_KEY && <Subscribe />}
+      {CONFIGS.convertKitFromID && CONFIGS.convertKitApiKey && <Subscribe />}
 
       <Footer />
     </>

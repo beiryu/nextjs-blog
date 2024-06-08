@@ -1,19 +1,19 @@
-import { Article } from 'utils/types';
 import slugify from 'slugify';
-import getLocalizedDate from 'utils/getLocalizedDate';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Article } from 'types/article.type';
+import { getLocalizedDate } from 'utils/datetime';
 
-type Props = {
+interface Props {
   article: Article;
-};
+}
 
 export default function ArticleCard({ article }: Props) {
   const slug = slugify(article.title).toLowerCase();
-
-  const formattedTime = getLocalizedDate(article.publishedDate);
+  const formattedTime = getLocalizedDate(article?.publishedDate);
 
   return (
-    <a href={`/blog/${slug}`}>
+    <Link href={`/blog/${slug}`}>
       <div className="flex flex-col overflow-hidden cursor-pointer group">
         <div className="relative">
           <div className="absolute">
@@ -26,11 +26,12 @@ export default function ArticleCard({ article }: Props) {
               </div>
             ))}
           </div>
-          <div className=" filter contrast-[0.9]">
+          <div className="filter contrast-[0.9] h-[250px]">
             <Image
               className="object-cover w-full transition rounded-lg aspect-video group-hover:opacity-90 bg-gray-50"
               src={article.coverImage}
               alt={'article cover'}
+              fill
             />
           </div>
         </div>
@@ -53,6 +54,6 @@ export default function ArticleCard({ article }: Props) {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }

@@ -2,9 +2,7 @@ import Image from 'next/image';
 import siteData from 'data/siteData';
 import Container from './Container';
 import SubscribeInput from '../subscribes/SubscribeInput';
-
-const FORM_ID = process.env.NEXT_PUBLIC_CONVERTKIT_FORM_ID;
-const API_KEY = process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY;
+import { CONFIGS } from 'config';
 
 export default function HeroHeader() {
   return (
@@ -15,6 +13,8 @@ export default function HeroHeader() {
             src={siteData.profileUrl}
             className="w-24 h-24 mx-auto rounded-full"
             alt="profile"
+            width={500}
+            height={500}
           />
         )}
         <div className="mt-4 text-3xl font-extrabold text-gray-900">
@@ -24,7 +24,7 @@ export default function HeroHeader() {
           {siteData.headerDescription}
         </div>
 
-        {FORM_ID! && API_KEY! && (
+        {CONFIGS.convertKitFromID! && CONFIGS.convertKitApiKey! && (
           <div className="mt-12">
             <SubscribeInput />
           </div>
