@@ -53,9 +53,10 @@ const ArticlePage = ({
           </div>
 
           <div className="max-w-5xl px-6 mx-auto my-16 md:px-8">
-            <img
+            <Image
               className="object-cover w-full rounded-xl aspect-video"
               src={coverImage}
+              alt={''}
             />
           </div>
           <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { Fragment } from 'react';
 import Text from 'components/notion/blocks/Text';
 import AnchorLink from 'components/notion/blocks/AnchorLink';
@@ -93,7 +94,7 @@ export function renderBlocks(block) {
       const caption = value.caption.length >= 1 ? value.caption[0].plain_text : '';
       return (
         <figure className="mt-0">
-          <img
+          <Image
             className="rounded-lg"
             src={src}
             placeholder="blur"

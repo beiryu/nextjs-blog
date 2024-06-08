@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import siteData from 'data/siteData';
 import Container from './Container';
 import SubscribeInput from '../subscribes/SubscribeInput';
@@ -10,7 +11,7 @@ export default function HeroHeader() {
     <div className="py-24 text-center bg-gray-100">
       <Container>
         {siteData?.profileUrl && (
-          <img
+          <Image
             src={siteData.profileUrl}
             className="w-24 h-24 mx-auto rounded-full"
             alt="profile"
