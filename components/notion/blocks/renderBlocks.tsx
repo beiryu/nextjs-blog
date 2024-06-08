@@ -98,7 +98,10 @@ export function renderBlocks(block) {
             className="rounded-lg"
             src={src}
             placeholder="blur"
+            blurDataURL={src}
             alt={caption ? caption : 'A visual depiction of what is being written about'}
+            width={500}
+            height={500}
           />
           {caption && <figcaption className="text-center">{caption}</figcaption>}
         </figure>

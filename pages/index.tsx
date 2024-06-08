@@ -1,11 +1,12 @@
-import { convertToArticleList, getAllArticles } from 'utils/notion';
+import { convertToArticleList, filterArticles } from 'utils/notion';
 import { Layout } from 'layouts/Layout';
 import { useState } from 'react';
-import { filterArticles } from 'utils/filterArticles';
 import HeroHeader from 'components/layouts/HeroHeader';
 import Category from 'components/common/Category';
 import Container from 'components/layouts/Container';
 import ArticleList from 'components/articles/ArticleList';
+import { getAllArticles } from 'services/notion';
+import { CONFIGS } from 'config';
 
 export default function Index({ articles, categories }) {
   const [selectedTag, setSelectedTag] = useState<string>(null);
@@ -37,7 +38,7 @@ export default function Index({ articles, categories }) {
 }
 
 export const getStaticProps = async () => {
-  const data = await getAllArticles(process.env.BLOG_DATABASE_ID);
+  const data = await getAllArticles(CONFIGS.blogDatabaseId);
 
   const { articles, categories } = convertToArticleList(data);
 
