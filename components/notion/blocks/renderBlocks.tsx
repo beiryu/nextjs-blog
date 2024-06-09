@@ -95,13 +95,11 @@ export function renderBlocks(block) {
       return (
         <figure className="mt-0">
           <Image
-            className="rounded-lg"
+            className="rounded-lg w-full mx-auto"
             src={src}
-            placeholder="blur"
-            blurDataURL={src}
             alt={caption ? caption : 'A visual depiction of what is being written about'}
-            width={500}
-            height={500}
+            width={2000}
+            height={2000}
           />
           {caption && <figcaption className="text-center">{caption}</figcaption>}
         </figure>

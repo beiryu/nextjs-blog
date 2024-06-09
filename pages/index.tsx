@@ -7,32 +7,36 @@ import Container from 'components/layouts/Container';
 import ArticleList from 'components/articles/ArticleList';
 import { getAllArticles } from 'services/notion';
 import { CONFIGS } from 'config';
+import { SegmentWrapper } from 'layouts/SegmentWrapper';
 
 export default function Index({ articles, categories }) {
-  const [selectedTag, setSelectedTag] = useState<string>(null);
-  const filteredArticles = filterArticles(articles, selectedTag);
+  const [selectedTagId, setSelectedTagId] = useState<string>(null);
+  const filteredArticles = filterArticles(articles, selectedTagId);
 
   return (
     <Layout>
-      <HeroHeader />
-      <div className="flex flex-wrap justify-center gap-4 mt-8">
-        {categories.map(tag => (
-          <Category
-            tag={tag}
-            key={tag}
-            selectedTag={selectedTag}
-            setSelectedTag={setSelectedTag}
-          />
-        ))}
-      </div>
-      <Container>
-        <div className="py-8">
-          <div className="my-8 text-3xl font-bold text-gray-900">
-            {!selectedTag ? 'Latest articles' : `${selectedTag} articles`}
-          </div>
-          <ArticleList articles={filteredArticles} />
+      <SegmentWrapper>
+        <HeroHeader />
+      </SegmentWrapper>
+      <SegmentWrapper>
+        <div className="flex flex-wrap justify-center gap-4 py-6">
+          {categories.map(tag => (
+            <Category
+              tag={tag}
+              key={tag.id}
+              selectedTagId={selectedTagId}
+              setSelectedTagId={setSelectedTagId}
+            />
+          ))}
         </div>
-      </Container>
+      </SegmentWrapper>
+      <SegmentWrapper>
+        <Container>
+          <div className="py-8">
+            <ArticleList articles={filteredArticles} />
+          </div>
+        </Container>
+      </SegmentWrapper>
     </Layout>
   );
 }

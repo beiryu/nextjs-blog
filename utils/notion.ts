@@ -1,6 +1,7 @@
 import { getBlocks, getMoreArticlesToSuggest } from 'services/notion';
 import slugify from 'slugify';
 import { Article } from 'types/article.type';
+import { Category } from 'types/category.type';
 
 export const mapArticleProperties = (article: any): Article => {
   const { id, properties } = article;
@@ -9,7 +10,7 @@ export const mapArticleProperties = (article: any): Article => {
     id: id,
     title: properties?.title.title[0].plain_text || '',
     categories:
-      properties?.categories?.multi_select.map((category: any) => category.name) || [],
+      properties?.categories?.multi_select.map((category: any) => category) || [],
     coverImage:
       properties?.coverImage?.files[0]?.file?.url ||
       properties?.coverImage?.files[0]?.external?.url ||
@@ -20,15 +21,16 @@ export const mapArticleProperties = (article: any): Article => {
 };
 
 export const convertToArticleList = (tableData: any) => {
-  let categories: string[] = [];
+  let categories: Category[] = [];
 
   const articles = tableData.map((article: any) => {
     const { properties } = article;
 
     properties?.categories?.multi_select?.forEach((category: any) => {
-      const { name } = category;
-      if (!categories.includes(name) && name) {
-        categories.push(name);
+      const { id } = category;
+      const categoryIds = categories.map(c => c.id);
+      if (id && !categoryIds.includes(id)) {
+        categories.push(category);
       }
     });
 
@@ -93,14 +95,15 @@ export const getContentRecursion = async block => {
   }
 };
 
-export const filterArticles = (articles, selectedTag): Article[] => {
+export const filterArticles = (articles, selectedTagId): Article[] => {
   return articles
     .filter(article => article.publishedDate)
     .sort((a, b) => Number(new Date(b.publishedDate)))
     .filter(article => {
-      if (selectedTag === null) {
+      if (selectedTagId === null) {
         return true;
       }
-      return article.categories.includes(selectedTag);
+      const categoryIds = article.categories.map(c => c.id);
+      return categoryIds.includes(selectedTagId);
     });
 };
