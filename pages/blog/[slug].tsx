@@ -11,6 +11,7 @@ import ArticleList from 'components/articles/ArticleList';
 import { getAllArticles } from 'services/notion';
 import { CONFIGS } from 'config';
 import { getLocalizedDate } from 'utils/datetime';
+import { SegmentWrapper } from 'layouts/SegmentWrapper';
 
 const ArticlePage = ({
   content,
@@ -48,19 +49,19 @@ const ArticlePage = ({
               <div className="font-extrabold tracking-tight text-gray-900 text-w-4xl sm:text-4xl">
                 {title}
               </div>
-              <div className="max-w-3xl mx-auto mt-3 text-xl leading-8 text-gray-500 sm:mt-4">
+              <div className="max-w-3xl mx-auto mt-3 text-lg leading-8 text-gray-500 sm:mt-4">
                 {summary}
               </div>
             </div>
           </div>
 
-          <div className="max-w-5xl px-6 mx-auto my-16 md:px-8">
+          <div className="max-w-5xl px-6 mx-auto my-10 md:px-8">
             <Image
-              className="object-cover w-full rounded-xl aspect-video"
+              className="object-cover w-2/3 mx-auto rounded-xl aspect-video"
               src={coverImage}
-              alt={''}
-              width={500}
-              height={500}
+              alt={title}
+              width={2000}
+              height={2000}
             />
           </div>
           <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">
@@ -71,14 +72,20 @@ const ArticlePage = ({
           <div className="py-12 border-t">
             <Container>
               <div className="flex items-center justify-between my-8">
-                <div className="text-3xl font-bold text-gray-900">Latest articles</div>
+                <div className="text-3xl font-bold text-gray-900">
+                  Recommended articles
+                </div>
                 <Link href="/">
                   <span className="font-semibold text-gray-900 cursor-pointer">
                     More articles ➜
                   </span>
                 </Link>
               </div>
-              <ArticleList articles={moreArticles} />
+              <SegmentWrapper>
+                <Container>
+                  <ArticleList articles={moreArticles} />
+                </Container>
+              </SegmentWrapper>
             </Container>
           </div>
         </div>

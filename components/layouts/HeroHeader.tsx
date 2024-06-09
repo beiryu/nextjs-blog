@@ -6,7 +6,7 @@ import { CONFIGS } from 'config';
 
 export default function HeroHeader() {
   return (
-    <div className="py-24 text-center bg-gray-100">
+    <div className="pb-24 text-center bg-gray-100">
       <Container>
         {siteData?.profileUrl && (
           <Image
@@ -17,11 +17,16 @@ export default function HeroHeader() {
             height={500}
           />
         )}
-        <div className="mt-4 text-3xl font-extrabold text-gray-900">
-          {siteData.headerTitle}
+        <div className="mt-4 text-5xl font-extrabold text-slate-900">
+          <span className="text-underline-rising">{siteData.headerTitle}</span>
         </div>
-        <div className="max-w-2xl mx-auto mt-2 text-xl text-gray-500">
+        <div className="max-w-2xl mx-auto mt-2 text-xl font-semibold text-slate-950">
           {siteData.headerDescription}
+        </div>
+        <div className="mx-auto mt-4 text-2xl font-semibold text-slate-950">
+          <span className="text-underline-rising">Full-stack</span>,{' '}
+          <span className="text-underline-rising">Algorithms</span> &{' '}
+          <span className="text-underline-rising">System Design</span>
         </div>
 
         {CONFIGS.convertKitFromID! && CONFIGS.convertKitApiKey! && (
