@@ -29,8 +29,12 @@ export const convertToArticleList = (tableData: any) => {
     properties?.categories?.multi_select?.forEach((category: any) => {
       const { id } = category;
       const categoryIds = categories.map(c => c.id);
-      if (id && !categoryIds.includes(id)) {
+      const indexOfCategory = categoryIds.indexOf(id);
+      if (id && indexOfCategory < 0) {
+        category.number = 1;
         categories.push(category);
+      } else {
+        categories[indexOfCategory].number++;
       }
     });
 

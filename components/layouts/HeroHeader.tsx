@@ -17,10 +17,10 @@ export default function HeroHeader() {
             height={500}
           />
         )}
-        <div className="mt-4 text-5xl font-extrabold text-slate-900">
+        <div className="my-4 text-5xl font-extrabold text-slate-900">
           <span className="text-underline-rising">{siteData.headerTitle}</span>
         </div>
-        <div className="max-w-2xl mx-auto mt-2 text-xl font-semibold text-slate-950">
+        <div className="max-w-2xl mx-auto text-xl font-semibold text-slate-950 text-orange-background-color">
           {siteData.headerDescription}
         </div>
         <div className="mx-auto mt-4 text-2xl font-semibold text-slate-950">
