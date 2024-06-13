@@ -67,7 +67,7 @@ export default function SubscribeInput() {
       {formState === 'success' ? (
         <div
           onClick={fire}
-          className="mt-2 text-sm font-semibold text-gray-500 cursor-pointer"
+          className="mt-8 text-sm font-semibold text-gray-500 cursor-pointer"
         >
           🎉 Give me more confetti
         </div>

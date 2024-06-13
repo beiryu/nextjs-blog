@@ -15,7 +15,7 @@ export function renderBlocks(block) {
   switch (type) {
     case 'paragraph':
       return (
-        <p className="leading-[28px] text-lg">
+        <p className="leading-normal text-sm font-light">
           <Text text={value.text} />
         </p>
       );
@@ -47,7 +47,7 @@ export function renderBlocks(block) {
     case 'numbered_list_item':
       return (
         <>
-          <li className="text-lg">
+          <li className="text-sm font-light">
             <Text text={value.text} />
           </li>
           <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">
@@ -59,7 +59,7 @@ export function renderBlocks(block) {
       );
     case 'to_do':
       return (
-        <div className="text-lg">
+        <div className="text-sm">
           <label htmlFor={id} className="flex items-center justify-start space-x-3">
             <input
               id={id}
@@ -77,7 +77,7 @@ export function renderBlocks(block) {
     case 'toggle':
       return (
         <details>
-          <summary>
+          <summary className="text-sm">
             <Text text={value.text} />
           </summary>
           <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">
@@ -116,7 +116,7 @@ export function renderBlocks(block) {
       return (
         <Callout>
           {value.icon && <span className="text-2xl">{value.icon.emoji}</span>}
-          <div className="leading-[28px] text-base">
+          <div className="leading-[28px] text-sm">
             <Text text={value.text} />
           </div>
         </Callout>
@@ -127,7 +127,7 @@ export function renderBlocks(block) {
       return <YoutubeEmbed url={value?.external?.url || ''} />;
     case 'quote':
       return (
-        <blockquote className="p-4 rounded-r-lg bg-gray-50">
+        <blockquote className="p-4 rounded-r-lg bg-gray-50 text-sm">
           <Text text={value.text} />
         </blockquote>
       );

@@ -40,54 +40,56 @@ const ArticlePage = ({
         date={publishedDate ? new Date(publishedDate).toISOString() : ''}
         ogUrl={`/blog/${slug}`}
       >
-        <div>
-          <div className="px-6 py-16 pb-48 mx-auto -mb-48 text-center bg-gray-100 md:pb-96 md:-mb-96">
-            <div className="max-w-3xl mx-auto">
-              <div className="flex items-center justify-center mb-2 space-x-2 text-sm text-gray-500">
-                <div className="">{publishedOn}</div>
-              </div>
-              <div className="font-extrabold tracking-tight text-gray-900 text-w-4xl sm:text-4xl">
-                {title}
-              </div>
-              <div className="max-w-3xl mx-auto mt-3 text-lg leading-8 text-gray-500 sm:mt-4">
-                {summary}
+        <div className="static pt-20 md:pt-40">
+          <SegmentWrapper>
+            <div className="max-w-5xl px-6 mx-auto my-10 md:px-8 absolute top-10 inset-x-0">
+              <Image
+                className="object-cover w-2/3 mx-auto rounded-xl aspect-video shadow-lg shadow-black"
+                src={coverImage}
+                alt={title}
+                width={2000}
+                height={2000}
+              />
+            </div>
+            <div className="px-6 pt-24 sm:pt-40 md:pt-52 pb-48 mx-auto -mb-48 text-center md:pb-96 md:-mb-96">
+              <div className="max-w-3xl mx-auto">
+                <div className="flex items-center justify-center mb-4 space-x-2 text-sm text-gray-500">
+                  <div className="">{publishedOn}</div>
+                </div>
+                <div className="font-extrabold tracking-wide leading-8 text-gray-900 text-w-4xl sm:text-4xl">
+                  {title}
+                </div>
+                <div className="max-w-3xl mx-auto mt-3 text-lg font-extralight leading-8 text-gray-500 sm:mt-4">
+                  {summary}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="max-w-5xl px-6 mx-auto my-10 md:px-8">
-            <Image
-              className="object-cover w-2/3 mx-auto rounded-xl aspect-video"
-              src={coverImage}
-              alt={title}
-              width={2000}
-              height={2000}
-            />
-          </div>
-          <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">
-            {content.map(block => (
-              <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
-            ))}
-          </div>
-          <div className="py-12 border-t">
-            <Container>
-              <div className="flex items-center justify-between my-8">
-                <div className="text-3xl font-bold text-gray-900">
-                  Recommended articles
+            <div className="max-w-4xl px-6 py-10 mx-auto mb-24 space-y-8 md:px-8">
+              {content.map(block => (
+                <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
+              ))}
+            </div>
+          </SegmentWrapper>
+          <SegmentWrapper>
+            <div className="py-12 border-t">
+              <Container>
+                <div className="flex items-center justify-between my-8">
+                  <div className="text-3xl font-bold text-gray-900">
+                    Recommended articles
+                  </div>
+                  <Link href="/">
+                    <span className="font-semibold text-gray-900 cursor-pointer">
+                      More articles ➜
+                    </span>
+                  </Link>
                 </div>
-                <Link href="/">
-                  <span className="font-semibold text-gray-900 cursor-pointer">
-                    More articles ➜
-                  </span>
-                </Link>
-              </div>
-              <SegmentWrapper>
                 <Container>
                   <ArticleList articles={moreArticles} />
                 </Container>
-              </SegmentWrapper>
-            </Container>
-          </div>
+              </Container>
+            </div>
+          </SegmentWrapper>
         </div>
       </Layout>
     </>

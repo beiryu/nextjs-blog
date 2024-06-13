@@ -33,7 +33,10 @@ export default function Index({ articles, categories }) {
       <SegmentWrapper>
         <Container>
           <div className="py-8">
-            <ArticleList articles={filteredArticles} />
+            <ArticleList
+              articles={filteredArticles}
+              setSelectedTagId={setSelectedTagId}
+            />
           </div>
         </Container>
       </SegmentWrapper>
