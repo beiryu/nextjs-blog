@@ -4,9 +4,6 @@
 
 @layer components {
   .text-underline-rising {
-    @apply rounded-sm bg-gradient-to-r from-slate-200 to-slate-300 hover:from-orange-100 hover:to-orange-200 bg-no-repeat [background-position:0_99%] [background-size:100%_0.3em] motion-safe:transition-all motion-safe:duration-200 hover:[background-size:100%_100%] focus:[background-size:100%_100%];
-  }
-  .text-orange-background-color {
-    @apply bg-orange-300 inline p-1 rounded-lg;
+    @apply rounded-sm bg-gradient-to-r from-slate-200 to-slate-300 hover:from-slate-300 hover:to-slate-300 bg-no-repeat [background-position:0_99%] [background-size:100%_0.3em] motion-safe:transition-all motion-safe:duration-200 hover:[background-size:100%_100%] focus:[background-size:100%_100%];
   }
 }

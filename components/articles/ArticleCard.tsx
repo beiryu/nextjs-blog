@@ -17,9 +17,9 @@ export default function ArticleCard({ article, setSelectedTagId }: Props) {
   return (
     <Link href={`/blog/${slug}`}>
       <div className="flex flex-col md:flex-row overflow-hidden cursor-pointer group gap-5 py-6 px-3 hover:bg-orange-50 hover:delay-100 rounded-md">
-        <div className="hidden md:block filter contrast-[0.9] h-28 w-48">
+        <div className="hidden md:block filter contrast-[0.9] h-28 w-36">
           <Image
-            className="shadow-lg shadow-black object-cover w-full transition rounded-lg aspect-video group-hover:opacity-90 bg-gray-50"
+            className="shadow-md shadow-black object-cover w-full transition rounded-lg aspect-video group-hover:opacity-90 bg-gray-50"
             src={article.coverImage}
             alt={article.title}
             width={2000}
@@ -38,13 +38,15 @@ export default function ArticleCard({ article, setSelectedTagId }: Props) {
               {formattedTime}
             </time>
             <span aria-hidden="true">&middot;</span>
-            {article.categories.map(category => (
-              <Category
-                tag={category}
-                key={category.id}
-                setSelectedTagId={setSelectedTagId}
-              />
-            ))}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+              {article.categories.map(category => (
+                <Category
+                  tag={category}
+                  key={category.id}
+                  setSelectedTagId={setSelectedTagId}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

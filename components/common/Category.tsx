@@ -29,10 +29,10 @@ export default function Category(props: ComponentProps) {
       key={tag.id}
       onClick={() => handleTagClick(tag.id)}
       className={`${
-        selectedTagId === tag.id && 'ring-2 ring-yellow-400 bg-yellow-100'
-      } inline-flex items-center px-3 py-1.5 bg-slate-200 rounded-xl cursor-pointer hover:bg-yellow-100 gap-2 shadow-sm drop-shadow-lg`}
+        selectedTagId === tag.id && 'ring-2 ring-slate-400 bg-slate-100'
+      } inline-flex items-center px-3 py-1.5 mr-2 bg-slate-200 rounded-xl cursor-pointer hover:bg-slate-100 gap-2 shadow-sm drop-shadow-lg`}
     >
-      <div className="rounded-xl w-6 h-6 p-1 bg-amber-300 shadow-md">
+      <div className="rounded-xl w-6 h-6 p-1 bg-orange-100 shadow-md">
         {tag.name === 'Side hustle' && <SiteHustleIcon />}
         {tag.name === 'AI' && <LightBulbIcon />}
         {tag.name === 'DevOps' && <CloudIcon />}
