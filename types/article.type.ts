@@ -7,4 +7,5 @@ export type Article = {
   categories: Category[];
   coverImage: string;
   summary: string;
+  popular: boolean;
 };

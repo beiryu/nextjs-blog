@@ -1,8 +1,7 @@
 import { JSDOM } from 'jsdom';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import console from 'console';
-import { isImageEndWithFormat } from 'utils/image';
 import { OgpData } from 'types/opg-data.type';
+import { isImageEndWithFormat } from 'utils/image';
 
 async function getOgp(req: NextApiRequest, res: NextApiResponse<OgpData>) {
   // Receive and encode URL information from query parameters
@@ -88,9 +87,6 @@ async function getOgp(req: NextApiRequest, res: NextApiResponse<OgpData>) {
       ogImgUrl: '',
       pageUrl: url as string
     });
-
-    // For debugging
-    console.log({ error });
   }
 }
 

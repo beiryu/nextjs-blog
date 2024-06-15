@@ -16,7 +16,8 @@ export const mapArticleProperties = (article: any): Article => {
       properties?.coverImage?.files[0]?.external?.url ||
       '/image-background.png',
     publishedDate: properties.published?.date?.start ?? '',
-    summary: properties?.summary.rich_text[0]?.plain_text ?? ''
+    summary: properties?.summary.rich_text[0]?.plain_text ?? '',
+    popular: properties?.popular.status?.name === 'true'
   };
 };
 
