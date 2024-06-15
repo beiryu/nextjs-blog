@@ -8,10 +8,12 @@ import ArticleList from 'components/articles/ArticleList';
 import { getAllArticles } from 'services/notion';
 import { CONFIGS } from 'config';
 import { SegmentWrapper } from 'layouts/SegmentWrapper';
+import { Article } from 'types/article.type';
+import ArticlePopular from 'components/articles/ArticlePopular';
 
-export default function Index({ articles, categories }) {
+export default function Index({ popularArticles, normalArticles, categories }) {
   const [selectedTagId, setSelectedTagId] = useState<string>(null);
-  const filteredArticles = filterArticles(articles, selectedTagId);
+  const filteredArticles = filterArticles(normalArticles, selectedTagId);
 
   return (
     <Layout>
@@ -30,6 +32,9 @@ export default function Index({ articles, categories }) {
           ))}
         </div>
       </SegmentWrapper>
+      <div className="my-14 px-10">
+        <ArticlePopular articles={popularArticles} />
+      </div>
       <SegmentWrapper>
         <Container>
           <div className="py-8">
@@ -48,10 +53,22 @@ export const getStaticProps = async () => {
   const data = await getAllArticles(CONFIGS.blogDatabaseId);
 
   const { articles, categories } = convertToArticleList(data);
+  const { normalArticles, popularArticles } = articles.reduce(
+    (acc, article: Article) => {
+      if (article.popular) {
+        acc.popularArticles.push(article);
+      } else {
+        acc.normalArticles.push(article);
+      }
+      return acc;
+    },
+    { normalArticles: [], popularArticles: [] }
+  );
 
   return {
     props: {
-      articles,
+      popularArticles,
+      normalArticles,
       categories
     },
     revalidate: 30
