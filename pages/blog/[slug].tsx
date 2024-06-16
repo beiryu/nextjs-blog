@@ -5,7 +5,6 @@ import { Layout } from 'layouts/Layout';
 import Image from 'next/image';
 import { renderBlocks } from 'components/notion/blocks/renderBlocks';
 import slugify from 'slugify';
-import siteData from 'data/siteData';
 import Container from 'components/layouts/Container';
 import ArticleList from 'components/articles/ArticleList';
 import { getAllArticles } from 'services/notion';

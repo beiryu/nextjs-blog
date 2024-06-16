@@ -14,7 +14,7 @@ import {
   FacebookMessengerShareButton,
   FacebookMessengerIcon
 } from 'next-share';
-import siteData from 'data/siteData';
+import siteData from 'data/site-data';
 import { CONFIGS } from 'config';
 
 interface ComponentProps {
