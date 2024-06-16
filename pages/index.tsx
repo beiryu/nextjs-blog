@@ -33,7 +33,7 @@ export default function Index({ popularArticles, normalArticles, categories }) {
         </div>
       </SegmentWrapper>
       <div className="my-14 px-10">
-        <ArticlePopular articles={popularArticles} />
+        <ArticlePopular articles={popularArticles} setSelectedTagId={setSelectedTagId} />
       </div>
       <SegmentWrapper>
         <Container>
