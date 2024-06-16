@@ -69,7 +69,7 @@ export default function ArticlePopular({ articles, setSelectedTagId }: Component
               <TwitterShareButton url={fullURL} title={article.title}>
                 <TwitterIcon size={20} round />
               </TwitterShareButton>
-              <LinkedinShareButton url={fullURL} title={article.title}>
+              <LinkedinShareButton url={fullURL}>
                 <LinkedinIcon size={20} round />
               </LinkedinShareButton>
               <FacebookShareButton
