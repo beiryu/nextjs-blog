@@ -5,6 +5,8 @@ import Subscribe from 'components/subscribes/Subscribe';
 import { CONFIGS } from 'config';
 import { SegmentWrapper } from './SegmentWrapper';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import Chat from 'components/chat/Chat';
+import ChatbotProvider from 'components/layouts/ChatbotProvider';
 
 export function Layout(props) {
   const { children, date, imageUrl, title, description, ogUrl } = props;
@@ -23,12 +25,15 @@ export function Layout(props) {
       <Header />
       <div className="py-14 bg-slate-100">
         <div className="container mx-auto">
-          {children}
-          {CONFIGS.convertKitFromID && CONFIGS.convertKitApiKey && (
-            <SegmentWrapper>
-              <Subscribe />
-            </SegmentWrapper>
-          )}
+          <ChatbotProvider>
+            {children}
+            <Chat />
+            {CONFIGS.convertKitFromID && CONFIGS.convertKitApiKey && (
+              <SegmentWrapper>
+                <Subscribe />
+              </SegmentWrapper>
+            )}
+          </ChatbotProvider>
         </div>
         <SpeedInsights />
       </div>
