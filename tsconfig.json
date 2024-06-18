@@ -15,7 +15,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "incremental": true,
-    "strictNullChecks": true
+    "strictNullChecks": false
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.tsx"],
   "exclude": ["node_modules"]

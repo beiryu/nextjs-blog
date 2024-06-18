@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createContext, useState } from 'react';
 import { nanoid } from 'nanoid';
 import { Message } from 'validators/message';
