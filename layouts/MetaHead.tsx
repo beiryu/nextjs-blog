@@ -1,4 +1,4 @@
-import siteData from 'data/siteData';
+import siteData from 'data/site-data';
 import Head from 'next/head';
 
 export function MetaHead(props) {

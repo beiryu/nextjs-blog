@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import siteData from 'data/siteData';
+import siteData from 'data/site-data';
 import Container from './Container';
 import SubscribeInput from '../subscribes/SubscribeInput';
 import { CONFIGS } from 'config';

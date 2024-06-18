@@ -1,4 +1,4 @@
-import siteData from 'data/siteData';
+import siteData from 'data/site-data';
 import Image from 'next/image';
 import UseAnimations from 'react-useanimations';
 import github from 'react-useanimations/lib/github';

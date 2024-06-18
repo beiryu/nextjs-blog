@@ -1,4 +1,4 @@
-import siteData from 'data/siteData';
+import siteData from 'data/site-data';
 
 export const getLocalizedDate = (date?: string): string => {
   return date

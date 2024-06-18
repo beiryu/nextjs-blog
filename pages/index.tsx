@@ -12,7 +12,7 @@ import { Article } from 'types/article.type';
 import ArticlePopular from 'components/articles/ArticlePopular';
 
 export default function Index({ popularArticles, normalArticles, categories }) {
-  const [selectedTagId, setSelectedTagId] = useState<string>(null);
+  const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
   const filteredArticles = filterArticles(normalArticles, selectedTagId);
 
   return (
