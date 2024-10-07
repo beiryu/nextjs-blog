@@ -27,7 +27,7 @@ export function Layout(props) {
         <div className="container mx-auto">
           <ChatbotProvider>
             {children}
-            <Chat />
+            {/* <Chat /> */}
             {CONFIGS.convertKitFromID && CONFIGS.convertKitApiKey && (
               <SegmentWrapper>
                 <Subscribe />
