@@ -15,13 +15,13 @@ export function renderBlocks(block) {
   switch (type) {
     case 'paragraph':
       return (
-        <p className="leading-normal text-sm font-light">
+        <p className="text-xl leading-relaxed">
           <Text text={value.text} />
         </p>
       );
     case 'heading_1':
       return (
-        <div className="pt-16 text-3xl font-semibold">
+        <div className="text-4xl font-bold mt-12 mb-4">
           <AnchorLink text={value.text[0].text.content}>
             <Text text={value.text} />
           </AnchorLink>
@@ -29,7 +29,7 @@ export function renderBlocks(block) {
       );
     case 'heading_2':
       return (
-        <div className="pt-8 text-2xl font-semibold">
+        <div className="text-3xl font-bold mt-10 mb-3">
           <AnchorLink text={value.text[0].text.content}>
             <Text text={value.text} />
           </AnchorLink>
@@ -37,7 +37,7 @@ export function renderBlocks(block) {
       );
     case 'heading_3':
       return (
-        <div className="pt-8 text-xl font-semibold">
+        <div className="text-2xl font-bold mt-8 mb-3">
           <AnchorLink text={value.text[0].text.content}>
             <Text text={value.text} />
           </AnchorLink>
@@ -47,7 +47,7 @@ export function renderBlocks(block) {
     case 'numbered_list_item':
       return (
         <>
-          <li className="text-sm font-light">
+          <li className="text-xl mb-0.5">
             <Text text={value.text} />
           </li>
           <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">

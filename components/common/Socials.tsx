@@ -1,16 +1,9 @@
 import siteData from 'data/site-data';
-import Image from 'next/image';
 import UseAnimations from 'react-useanimations';
 import github from 'react-useanimations/lib/github';
 import linkedin from 'react-useanimations/lib/linkedin';
-import twitter from 'react-useanimations/lib/twitter';
 
 const socials = [
-  {
-    name: 'Twitter',
-    href: siteData.twitter,
-    animation: twitter
-  },
   {
     name: 'LinkedIn',
     href: siteData.linkedin,

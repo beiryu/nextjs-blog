@@ -10,7 +10,8 @@ import {
   ServerCogIcon,
   SquareGanttChartIcon,
   TerminalIcon,
-  UserRoundIcon
+  UserRoundIcon,
+  ServerIcon
 } from 'lucide-react';
 
 interface ComponentProps {
@@ -46,6 +47,7 @@ export default function Category(props: ComponentProps) {
         {tag.name === 'Personal Stories' && <UserRoundIcon />}
         {tag.name === 'Caching' && <DatabaseZapIcon />}
         {tag.name === 'Career' && <SquareGanttChartIcon />}
+        {tag.name === 'AWS' && <ServerIcon />}
       </div>
       <span className="text-sm font-medium">{tag.name || 'All'}</span>
       <span className="text-xs font-thin">{tag.number}</span>

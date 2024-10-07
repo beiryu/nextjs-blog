@@ -11,18 +11,16 @@ export default function Text({ text }) {
       <span
         key={index}
         className={[
-          bold ? 'font-bold' : null,
-          italic ? 'italic' : null,
-          code
-            ? 'bg-gray-200 font-semibold  text-gray-500 text-sm px-2 rounded mx-1 inline-block align-middle tracking-tight'
-            : null,
-          strikethrough ? 'line-through' : null,
-          underline ? 'underline' : null
+          bold ? 'font-bold' : '',
+          italic ? 'italic' : '',
+          code ? 'font-mono bg-gray-100 rounded px-1 py-0.5' : '',
+          strikethrough ? 'line-through' : '',
+          underline ? 'underline' : ''
         ].join(' ')}
         style={color !== 'default' ? { color } : {}}
       >
         {text?.link ? (
-          <a className="text-gray-700 underline" href={text.link.url}>
+          <a className="text-blue-600 hover:underline" href={text.link.url}>
             {text.content}
           </a>
         ) : (
