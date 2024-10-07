@@ -11,6 +11,7 @@ import { getAllArticles } from 'services/notion';
 import { CONFIGS } from 'config';
 import { getLocalizedDate } from 'utils/datetime';
 import { SegmentWrapper } from 'layouts/SegmentWrapper';
+import FallbackImage from 'components/chat/FallbackImage';
 
 const ArticlePage = ({
   content,
@@ -42,7 +43,7 @@ const ArticlePage = ({
         <div className="static pt-20 md:pt-40">
           <SegmentWrapper>
             <div className="max-w-5xl px-6 mx-auto my-10 md:px-8 absolute top-10 inset-x-0">
-              <Image
+              <FallbackImage
                 className="object-cover w-2/3 mx-auto rounded-xl aspect-video shadow-lg shadow-black"
                 src={coverImage}
                 alt={title}

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { Fragment } from 'react';
 import Text from 'components/notion/blocks/Text';
 import AnchorLink from 'components/notion/blocks/AnchorLink';
@@ -7,6 +6,7 @@ import Callout from 'components/notion/blocks/Callout';
 import YoutubeEmbed from 'components/notion/blocks/YoutubeEmbed';
 import Bookmark from 'components/notion/blocks/Bookmark';
 import File from 'components/notion/blocks/File';
+import FallbackImage from 'components/chat/FallbackImage';
 
 export function renderBlocks(block) {
   const { type, id } = block;
@@ -94,7 +94,7 @@ export function renderBlocks(block) {
       const caption = value.caption.length >= 1 ? value.caption[0].plain_text : '';
       return (
         <figure className="mt-0">
-          <Image
+          <FallbackImage
             className="rounded-lg w-full mx-auto"
             src={src}
             alt={caption ? caption : 'A visual depiction of what is being written about'}

@@ -1,6 +1,5 @@
 import { Article } from 'types/article.type';
 import Category from 'components/common/Category';
-import Image from 'next/image';
 import Link from 'next/link';
 import slugify from 'slugify';
 import { getLocalizedDate } from 'utils/datetime';
@@ -16,6 +15,7 @@ import {
 } from 'next-share';
 import siteData from 'data/site-data';
 import { CONFIGS } from 'config';
+import FallbackImage from 'components/chat/FallbackImage';
 
 interface ComponentProps {
   articles: Article[];
@@ -54,8 +54,8 @@ export default function ArticlePopular({ articles, setSelectedTagId }: Component
               ))}
             </div>
             <div className="filter contrast-[0.9] lg:pt-2">
-              <Image
-                className="scale-100 md:scale-110 xl:scale-100 hover:scale-110 md:hover:scale-125 xl:hover:scale-110 shadow-md shadow-black object-cover w-full transition rounded-sm aspect-video group-hover:opacity-90 bg-gray-50"
+              <FallbackImage
+                className="mx-auto scale-100 md:scale-110 xl:scale-100 hover:scale-110 md:hover:scale-125 xl:hover:scale-110 shadow-md shadow-black object-cover w-full transition rounded-sm aspect-video group-hover:opacity-90 bg-gray-50"
                 src={article.coverImage}
                 alt={article.title}
                 width={2000}
