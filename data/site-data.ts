@@ -8,7 +8,6 @@ const siteData = {
   language: 'en-us',
   locale: 'en-US',
   github: 'https://github.com/beiryu',
-  twitter: 'https://github.com/beiryu',
   websiteUrl: 'https://khanhdinh.tech',
   linkedin: 'https://www.linkedin.com/in/khanh-ndinh/'
 };
