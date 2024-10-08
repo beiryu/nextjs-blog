@@ -2,8 +2,14 @@ import siteData from 'data/site-data';
 import UseAnimations from 'react-useanimations';
 import github from 'react-useanimations/lib/github';
 import linkedin from 'react-useanimations/lib/linkedin';
+import explore from 'react-useanimations/lib/explore';
 
 const socials = [
+  {
+    name: 'Explore Portfolio',
+    href: siteData.portfolio,
+    animation: explore
+  },
   {
     name: 'LinkedIn',
     href: siteData.linkedin,
@@ -26,6 +32,7 @@ export default function Socials() {
           className="transform  filter hover:contrast-50"
           target="_blank"
           rel="noreferrer"
+          title={item.name}
         >
           <span className="sr-only">{item.name}</span>
           <UseAnimations animation={item.animation} strokeColor="#333" />

@@ -9,7 +9,8 @@ const siteData = {
   locale: 'en-US',
   github: 'https://github.com/beiryu',
   websiteUrl: 'https://khanhdinh.tech',
-  linkedin: 'https://www.linkedin.com/in/khanh-ndinh/'
+  linkedin: 'https://www.linkedin.com/in/khanh-ndinh/',
+  portfolio: 'https://portfolio.pagedaisy.com/'
 };
 
 export default siteData;
