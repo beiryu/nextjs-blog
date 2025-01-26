@@ -43,7 +43,7 @@ export const getMoreArticlesToSuggest = async (databaseId, currentArticleTitle) 
         },
         {
           property: 'title',
-          text: {
+          rich_text: {
             does_not_equal: currentArticleTitle
           }
         }
@@ -72,4 +72,22 @@ export const getBlocks = async (
   const blocks = await notion.blocks.children.list(queryBuilder);
 
   return blocks;
+};
+
+export const updateArticleClaps = async (pageId: string, newClaps: number) => {
+  try {
+    await notion.pages.update({
+      page_id: pageId,
+      properties: {
+        claps: {
+          number: newClaps
+        }
+      }
+    });
+
+    return newClaps;
+  } catch (error) {
+    console.error('Error updating claps:', error);
+    throw new Error('Failed to update claps');
+  }
 };

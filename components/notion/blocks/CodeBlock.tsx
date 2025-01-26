@@ -130,8 +130,9 @@ export default function CodeBlock({ code, language, metaString, caption }: Props
                       lineProps.className = `${lineProps.className} highlight-line`;
                     }
 
+                    const { key, ...rest } = lineProps;
                     return (
-                      <div key={i} {...lineProps}>
+                      <div key={key} {...rest}>
                         {line.map((token, key) => (
                           <span key={key} {...getTokenProps({ token, key })} />
                         ))}

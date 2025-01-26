@@ -33,7 +33,7 @@ export default function Category(props: ComponentProps) {
       onClick={() => handleTagClick(tag.id)}
       className={`${
         selectedTagId === tag.id && 'ring-2 ring-slate-400 bg-slate-100'
-      } inline-flex items-center px-3 py-1.5 mr-2 bg-slate-200 rounded-xl cursor-pointer hover:bg-slate-100 gap-2 shadow-sm drop-shadow-lg`}
+      } inline-flex items-center px-3 py-1.5 mr-2 bg-slate-200 rounded-xl cursor-pointer hover:bg-slate-100 gap-2 shadow-sm drop-shadow-lg w-fit`}
     >
       <div className="rounded-xl w-6 h-6 p-1 bg-orange-100 shadow-md flex justify-center items-center">
         {tag.name === 'Side hustle' && <BirdIcon />}

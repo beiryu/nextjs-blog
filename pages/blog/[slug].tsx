@@ -12,14 +12,17 @@ import { CONFIGS } from 'config';
 import { getLocalizedDate } from 'utils/datetime';
 import { SegmentWrapper } from 'layouts/SegmentWrapper';
 import FallbackImage from 'components/chat/FallbackImage';
+import ClapButton from 'components/common/ClapButton';
 
 const ArticlePage = ({
+  id,
   content,
   title,
   coverImage,
   publishedDate,
   summary,
-  moreArticles
+  moreArticles,
+  claps
 }) => {
   const publishedOn = getLocalizedDate(publishedDate);
 
@@ -55,6 +58,7 @@ const ArticlePage = ({
               <div className="max-w-3xl mx-auto">
                 <div className="flex items-center justify-center mb-4 space-x-2 text-sm text-gray-500">
                   <div className="">{publishedOn}</div>
+                  <ClapButton pageId={id} initialClaps={claps} />
                 </div>
                 <div className="font-extrabold tracking-wide leading-8 text-gray-900 text-w-4xl sm:text-4xl">
                   {title}
@@ -65,10 +69,14 @@ const ArticlePage = ({
               </div>
             </div>
 
-            <div className="max-w-4xl px-6 py-10 mx-auto mb-24 space-y-8 md:px-8">
+            <div className="max-w-4xl px-6 py-10 mx-auto space-y-8 md:px-8">
               {content.map(block => (
                 <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
               ))}
+            </div>
+
+            <div className="flex items-center justify-center py-10">
+              <ClapButton pageId={id} initialClaps={claps} />
             </div>
           </SegmentWrapper>
           <SegmentWrapper>

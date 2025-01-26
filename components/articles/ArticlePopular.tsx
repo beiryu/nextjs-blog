@@ -16,6 +16,7 @@ import {
 import siteData from 'data/site-data';
 import { CONFIGS } from 'config';
 import FallbackImage from 'components/chat/FallbackImage';
+import ClapButton from 'components/common/ClapButton';
 
 interface ComponentProps {
   articles: Article[];
@@ -64,6 +65,9 @@ export default function ArticlePopular({ articles, setSelectedTagId }: Component
             </div>
             <div className="p-4">
               <p className="mt-3 text-sm text-gray-500 line-clamp-6">{article.summary}</p>
+              <div className="flex flex-row justify-center">
+                <ClapButton pageId={article.id} initialClaps={article.claps} />
+              </div>
             </div>
             <div className="flex flex-row justify-center gap-2">
               <TwitterShareButton url={fullURL} title={article.title}>

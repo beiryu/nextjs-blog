@@ -1,6 +1,6 @@
 import { Category } from './category.type';
 
-export type Article = {
+export interface Article {
   id: string;
   title: string;
   publishedDate?: string;
@@ -8,4 +8,5 @@ export type Article = {
   coverImage: string;
   summary: string;
   popular: boolean;
-};
+  claps: number;
+}

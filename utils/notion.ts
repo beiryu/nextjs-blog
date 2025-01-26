@@ -7,7 +7,7 @@ export const mapArticleProperties = (article: any): Article => {
   const { id, properties } = article;
 
   return {
-    id: id,
+    id,
     title: properties?.title.title[0].plain_text || '',
     categories:
       properties?.categories?.multi_select.map((category: any) => category) || [],
@@ -17,7 +17,8 @@ export const mapArticleProperties = (article: any): Article => {
       '/image-background.png',
     publishedDate: properties.published?.date?.start ?? '',
     summary: properties?.summary.rich_text[0]?.plain_text ?? '',
-    popular: properties?.popular.status?.name === 'true'
+    popular: properties?.popular.status?.name === 'true',
+    claps: properties?.claps?.number || 0
   };
 };
 

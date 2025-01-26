@@ -16,30 +16,30 @@ export function renderBlocks(block) {
     case 'paragraph':
       return (
         <p className="text-xl leading-relaxed">
-          <Text text={value.text} />
+          <Text text={value.rich_text} />
         </p>
       );
     case 'heading_1':
       return (
         <div className="text-4xl font-bold mt-12 mb-4">
-          <AnchorLink text={value.text[0].text.content}>
-            <Text text={value.text} />
+          <AnchorLink text={value.rich_text[0].plain_text}>
+            <Text text={value.rich_text} />
           </AnchorLink>
         </div>
       );
     case 'heading_2':
       return (
         <div className="text-3xl font-bold mt-10 mb-3">
-          <AnchorLink text={value.text[0].text.content}>
-            <Text text={value.text} />
+          <AnchorLink text={value.rich_text[0].plain_text}>
+            <Text text={value.rich_text} />
           </AnchorLink>
         </div>
       );
     case 'heading_3':
       return (
         <div className="text-2xl font-bold mt-8 mb-3">
-          <AnchorLink text={value.text[0].text.content}>
-            <Text text={value.text} />
+          <AnchorLink text={value.rich_text[0].plain_text}>
+            <Text text={value.rich_text} />
           </AnchorLink>
         </div>
       );
@@ -48,7 +48,7 @@ export function renderBlocks(block) {
       return (
         <>
           <li className="text-xl mb-0.5">
-            <Text text={value.text} />
+            <Text text={value.rich_text} />
           </li>
           <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">
             {block.children?.map(block => (
@@ -63,14 +63,14 @@ export function renderBlocks(block) {
           <label htmlFor={id} className="flex items-center justify-start space-x-3">
             <input
               id={id}
-              aria-describedby={value.text}
+              aria-describedby={value.rich_text}
               name={id}
               type="checkbox"
               checked={value?.checked}
               readOnly
               className="w-4 h-4 text-teal-500 border-gray-300 rounded focus:ring-teal-500"
             />
-            <Text text={value.text} />
+            <Text text={value.rich_text} />
           </label>
         </div>
       );
@@ -78,7 +78,7 @@ export function renderBlocks(block) {
       return (
         <details>
           <summary className="text-sm">
-            <Text text={value.text} />
+            <Text text={value.rich_text} />
           </summary>
           <div className="max-w-4xl px-6 mx-auto mb-24 space-y-8 md:px-8">
             {block.children?.map(block => (
@@ -88,7 +88,7 @@ export function renderBlocks(block) {
         </details>
       );
     case 'child_page':
-      return <p>{value.title}</p>;
+      return <p>{value.title[0].plain_text}</p>;
     case 'image':
       const src = value.type === 'external' ? value.external.url : value.file.url;
       const caption = value.caption.length >= 1 ? value.caption[0].plain_text : '';
@@ -109,7 +109,7 @@ export function renderBlocks(block) {
         <CodeBlock
           language={value.language}
           caption={value.caption.length >= 1 && value.caption[0].plain_text}
-          code={value.text[0].text.content}
+          code={value.rich_text[0].plain_text}
         />
       );
     case 'callout':
@@ -117,7 +117,7 @@ export function renderBlocks(block) {
         <Callout>
           {value.icon && <span className="text-2xl">{value.icon.emoji}</span>}
           <div className="leading-[28px] text-sm">
-            <Text text={value.text} />
+            <Text text={value.rich_text} />
           </div>
         </Callout>
       );
@@ -128,7 +128,7 @@ export function renderBlocks(block) {
     case 'quote':
       return (
         <blockquote className="p-4 rounded-r-lg bg-gray-50 text-sm">
-          <Text text={value.text} />
+          <Text text={value.rich_text} />
         </blockquote>
       );
     case 'divider':

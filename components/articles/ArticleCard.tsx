@@ -4,6 +4,7 @@ import { Article } from 'types/article.type';
 import { getLocalizedDate } from 'utils/datetime';
 import Category from 'components/common/Category';
 import FallbackImage from 'components/chat/FallbackImage';
+import ClapButton from 'components/common/ClapButton';
 
 interface Props {
   article: Article;
@@ -38,7 +39,9 @@ export default function ArticleCard({ article, setSelectedTagId }: Props) {
               {formattedTime}
             </time>
             <span aria-hidden="true">&middot;</span>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+            <ClapButton pageId={article.id} initialClaps={article.claps} />
+            <span aria-hidden="true">&middot;</span>
+            <div className="flex flex-wrap gap-2">
               {article.categories.map(category => (
                 <Category
                   tag={category}
