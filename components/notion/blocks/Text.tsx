@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Text({ text }) {
   if (!text) {
     return null;
@@ -20,9 +22,12 @@ export default function Text({ text }) {
         style={color !== 'default' ? { color } : {}}
       >
         {text?.link ? (
-          <a className="text-blue-600 hover:underline" href={text.link.url}>
+          <Link
+            className="text-gray-600 hover:text-gray-500 decoration-2 hover:underline focus:outline-none focus:underline opacity-80"
+            href={text.link.url}
+          >
             {text.content}
-          </a>
+          </Link>
         ) : (
           text?.content
         )}

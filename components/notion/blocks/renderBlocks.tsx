@@ -139,6 +139,14 @@ export function renderBlocks(block) {
       return <Bookmark url={value.url}></Bookmark>;
     case 'file':
       return <File file={value} />;
+    case 'synced_block':
+      return (
+        <div className="flex flex-col items-center max-w-4xl mx-auto">
+          {block.children?.map(block => (
+            <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
+          ))}
+        </div>
+      );
     default:
       if (process.env.NODE_ENV === 'development') {
         return `❌ Unsupported block (${
