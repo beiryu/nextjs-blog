@@ -58,7 +58,6 @@ const ArticlePage = ({
               <div className="max-w-3xl mx-auto">
                 <div className="flex items-center justify-center mb-4 space-x-2 text-sm text-gray-500">
                   <div className="">{publishedOn}</div>
-                  <ClapButton pageId={id} initialClaps={claps} />
                 </div>
                 <div className="font-extrabold tracking-wide leading-8 text-gray-900 text-w-4xl sm:text-4xl">
                   {title}
