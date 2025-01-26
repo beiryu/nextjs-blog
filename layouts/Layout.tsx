@@ -5,7 +5,6 @@ import Subscribe from 'components/subscribes/Subscribe';
 import { CONFIGS } from 'config';
 import { SegmentWrapper } from './SegmentWrapper';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import Chat from 'components/chat/Chat';
 import ChatbotProvider from 'components/layouts/ChatbotProvider';
 
 export function Layout(props) {
@@ -27,7 +26,6 @@ export function Layout(props) {
         <div className="container mx-auto">
           <ChatbotProvider>
             {children}
-            {/* <Chat /> */}
             {CONFIGS.convertKitFromID && CONFIGS.convertKitApiKey && (
               <SegmentWrapper>
                 <Subscribe />

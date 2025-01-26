@@ -15,7 +15,7 @@ import {
 } from 'next-share';
 import siteData from 'data/site-data';
 import { CONFIGS } from 'config';
-import FallbackImage from 'components/chat/FallbackImage';
+import FallbackImage from 'components/common/FallbackImage';
 import ClapButton from 'components/common/ClapButton';
 
 interface ComponentProps {

@@ -6,7 +6,7 @@ import Callout from 'components/notion/blocks/Callout';
 import YoutubeEmbed from 'components/notion/blocks/YoutubeEmbed';
 import Bookmark from 'components/notion/blocks/Bookmark';
 import File from 'components/notion/blocks/File';
-import FallbackImage from 'components/chat/FallbackImage';
+import FallbackImage from 'components/common/FallbackImage';
 
 export function renderBlocks(block) {
   const { type, id } = block;

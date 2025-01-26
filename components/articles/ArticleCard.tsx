@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Article } from 'types/article.type';
 import { getLocalizedDate } from 'utils/datetime';
 import Category from 'components/common/Category';
-import FallbackImage from 'components/chat/FallbackImage';
+import FallbackImage from 'components/common/FallbackImage';
 import ClapButton from 'components/common/ClapButton';
 
 interface Props {

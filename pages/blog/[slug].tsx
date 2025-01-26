@@ -11,7 +11,7 @@ import { getAllArticles } from 'services/notion';
 import { CONFIGS } from 'config';
 import { getLocalizedDate } from 'utils/datetime';
 import { SegmentWrapper } from 'layouts/SegmentWrapper';
-import FallbackImage from 'components/chat/FallbackImage';
+import FallbackImage from 'components/common/FallbackImage';
 import ClapButton from 'components/common/ClapButton';
 
 const ArticlePage = ({
