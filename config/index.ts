@@ -4,5 +4,6 @@ export const CONFIGS = {
   blogDatabaseId: process.env.BLOG_DATABASE_ID,
   convertKitFromID: process.env.NEXT_PUBLIC_CONVERTKIT_FORM_ID,
   convertKitApiKey: process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY,
-  openaiApiKey: process.env.OPENAI_API_KEY
-};
+  openaiApiKey: process.env.OPENAI_API_KEY,
+  commentsDatabaseId: process.env.NOTION_COMMENTS_DATABASE_ID
+} as const;

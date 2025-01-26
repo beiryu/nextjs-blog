@@ -13,6 +13,7 @@ import { getLocalizedDate } from 'utils/datetime';
 import { SegmentWrapper } from 'layouts/SegmentWrapper';
 import FallbackImage from 'components/common/FallbackImage';
 import ClapButton from 'components/common/ClapButton';
+import CommentSection from 'components/comments/CommentSection';
 
 const ArticlePage = ({
   id,
@@ -79,17 +80,22 @@ const ArticlePage = ({
             </div>
           </SegmentWrapper>
           <SegmentWrapper>
+            <CommentSection articleId={id} />
+          </SegmentWrapper>
+          <SegmentWrapper>
             <div className="py-12 border-t">
               <Container>
-                <div className="flex items-center justify-between my-8">
-                  <div className="text-3xl font-bold text-gray-900">
-                    Recommended articles
+                <div className="max-w-4xl mx-auto px-4">
+                  <div className="flex items-center justify-between my-8">
+                    <h2 className="text-xl lg:text-3xl font-bold text-gray-900">
+                      Recommended articles
+                    </h2>
+                    <Link href="/">
+                      <span className="font-semibold text-gray-900 cursor-pointer">
+                        More articles ➜
+                      </span>
+                    </Link>
                   </div>
-                  <Link href="/">
-                    <span className="font-semibold text-gray-900 cursor-pointer">
-                      More articles ➜
-                    </span>
-                  </Link>
                 </div>
                 <Container>
                   <ArticleList articles={moreArticles} />
