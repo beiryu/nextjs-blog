@@ -95,7 +95,6 @@ export function renderBlocks(block) {
       return (
         <figure className="mt-0">
           <FallbackImage
-            className="rounded-lg w-full mx-auto"
             src={src}
             alt={caption ? caption : 'A visual depiction of what is being written about'}
             width={2000}

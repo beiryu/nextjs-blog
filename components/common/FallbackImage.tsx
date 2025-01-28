@@ -27,17 +27,26 @@ const FallbackImage = ({ src, alt, width, height, className }: FallbackImageProp
     );
 
   return (
-    <>
+    <div className="relative">
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
-        className={loading ? '' : className}
+        quality={75}
+        loading="lazy"
+        className={`
+          duration-700 ease-in-out
+          ${
+            loading
+              ? 'scale-105 blur-2xl'
+              : `scale-100 blur-0 aspect-video object-cover rounded-lg ${className}`
+          }
+        `}
         onError={() => setError(true)}
         onLoad={() => setLoading(false)}
       />
-    </>
+    </div>
   );
 };
 

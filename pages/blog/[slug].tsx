@@ -48,7 +48,7 @@ const ArticlePage = ({
           <SegmentWrapper>
             <div className="max-w-5xl px-6 mx-auto my-10 md:px-8 absolute top-10 inset-x-0">
               <FallbackImage
-                className="object-cover w-2/3 mx-auto rounded-xl aspect-video shadow-lg shadow-black"
+                className="w-2/3 mx-auto shadow-lg"
                 src={coverImage}
                 alt={title}
                 width={2000}
@@ -131,13 +131,12 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params: { slug } }) => {
   const data = await getAllArticles(CONFIGS.blogDatabaseId);
-
   const page = getArticlePage(data, slug);
   const result = await getArticlePageData(page, slug, CONFIGS.blogDatabaseId);
 
   return {
     props: result,
-    revalidate: 30
+    revalidate: 3600
   };
 };
 

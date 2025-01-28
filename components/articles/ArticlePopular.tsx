@@ -54,9 +54,9 @@ export default function ArticlePopular({ articles, setSelectedTagId }: Component
                 />
               ))}
             </div>
-            <div className="filter contrast-[0.9] lg:pt-2">
+            <div className="filter contrast-[0.9] overflow-hidden rounded-lg">
               <FallbackImage
-                className="mx-auto scale-100 md:scale-110 xl:scale-100 hover:scale-110 md:hover:scale-125 xl:hover:scale-110 shadow-md shadow-black object-cover w-full transition rounded-sm aspect-video group-hover:opacity-90 bg-gray-50"
+                className="md:scale-110 xl:scale-100 hover:scale-110 md:hover:scale-125 xl:hover:scale-110"
                 src={article.coverImage}
                 alt={article.title}
                 width={2000}

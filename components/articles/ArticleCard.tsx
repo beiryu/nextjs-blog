@@ -20,7 +20,6 @@ export default function ArticleCard({ article, setSelectedTagId }: Props) {
       <div className="flex flex-col md:flex-row overflow-hidden cursor-pointer group gap-5 py-6 px-3 hover:bg-orange-50 hover:delay-100 rounded-md">
         <div className="hidden md:block filter contrast-[0.9] h-28 w-36">
           <FallbackImage
-            className="shadow-md shadow-black object-cover w-full transition rounded-lg aspect-video group-hover:opacity-90 bg-gray-50"
             src={article.coverImage}
             alt={article.title}
             width={2000}
