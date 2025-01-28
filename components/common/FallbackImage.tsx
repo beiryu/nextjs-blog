@@ -36,12 +36,8 @@ const FallbackImage = ({ src, alt, width, height, className }: FallbackImageProp
         quality={75}
         loading="lazy"
         className={`
-          duration-700 ease-in-out
-          ${
-            loading
-              ? 'scale-105 blur-2xl'
-              : `scale-100 blur-0 aspect-video object-cover rounded-lg ${className}`
-          }
+          duration-700 ease-in-out aspect-video object-cover rounded-lg 
+          ${loading ? 'scale-110 blur-2xl ' : `scale-100 blur-0 ${className}`}
         `}
         onError={() => setError(true)}
         onLoad={() => setLoading(false)}
