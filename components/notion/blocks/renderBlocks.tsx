@@ -146,6 +146,44 @@ export function renderBlocks(block) {
           ))}
         </div>
       );
+    case 'table':
+      return (
+        <div className="my-4 overflow-x-auto">
+          <table className="min-w-full border-collapse border border-gray-200">
+            <tbody>
+              {block.children?.map((row, rowIndex) => {
+                const cells = row.table_row?.cells || [];
+                return (
+                  <tr
+                    key={row.id}
+                    className={`
+                      ${rowIndex === 0 && value.has_column_header ? 'bg-gray-50' : ''}
+                      ${value.has_row_header && cells.length > 0 ? 'bg-gray-50' : ''}
+                    `}
+                  >
+                    {cells.map((cell, cellIndex) => {
+                      const tag =
+                        (rowIndex === 0 && value.has_column_header) ||
+                        (cellIndex === 0 && value.has_row_header)
+                          ? 'th'
+                          : 'td';
+
+                      return React.createElement(
+                        tag,
+                        {
+                          key: `${row.id}-${cellIndex}`,
+                          className: 'border border-gray-200 px-4 py-2 text-sm'
+                        },
+                        <Text text={cell} />
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      );
     default:
       if (process.env.NODE_ENV === 'development') {
         return `❌ Unsupported block (${

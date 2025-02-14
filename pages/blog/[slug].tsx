@@ -48,7 +48,7 @@ const ArticlePage = ({
           <SegmentWrapper>
             <div className="max-w-5xl px-6 mx-auto my-10 md:px-8 absolute top-10 inset-x-0">
               <FallbackImage
-                className="w-2/3 mx-auto shadow-lg"
+                className="w-2/3 mx-auto object-cover shadow-lg"
                 src={coverImage}
                 alt={title}
                 width={2000}
