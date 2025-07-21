@@ -38,9 +38,9 @@ export default function CommentSection({ articleId }: CommentSectionProps) {
 
   return (
     <section className="py-8 lg:py-16 antialiased">
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-screen-xl mx-auto px-4">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl lg:text-3xl font-bold text-gray-900">
+          <h2 className="text-xl lg:text-3xl font-medium text-gray-900">
             Discussion ({comments?.length || 0})
           </h2>
         </div>

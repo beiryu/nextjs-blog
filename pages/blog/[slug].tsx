@@ -44,11 +44,11 @@ const ArticlePage = ({
         date={publishedDate ? new Date(publishedDate).toISOString() : ''}
         ogUrl={`/blog/${slug}`}
       >
-        <div className="static pt-20 md:pt-40">
+        <div className="static pt-40 md:pt-56">
           <SegmentWrapper>
-            <div className="max-w-5xl px-6 mx-auto my-10 md:px-8 absolute top-10 inset-x-0">
+            <div className="pt-10 max-w-5xl px-6 mx-auto my-10 md:px-8 absolute top-10 inset-x-0">
               <FallbackImage
-                className="w-2/3 mx-auto object-cover shadow-lg"
+                className="w-2/3 mx-auto object-cover shadow-lg rounded-lg"
                 src={coverImage}
                 alt={title}
                 width={2000}
@@ -69,29 +69,25 @@ const ArticlePage = ({
               </div>
             </div>
 
-            <div className="max-w-4xl px-6 py-10 mx-auto space-y-8 md:px-8">
+            <div className="max-w-screen-xl px-6 my-10 mx-auto space-y-8 md:px-8 border rounded-lg">
               {content.map(block => (
                 <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
               ))}
-            </div>
-
-            <div className="flex items-center justify-center py-10">
-              <ClapButton pageId={id} initialClaps={claps} />
             </div>
           </SegmentWrapper>
           <SegmentWrapper>
             <CommentSection articleId={id} />
           </SegmentWrapper>
           <SegmentWrapper>
-            <div className="py-12 border-t">
+            <div className="py-12">
               <Container>
-                <div className="max-w-4xl mx-auto px-4">
-                  <div className="flex items-center justify-between my-8">
-                    <h2 className="text-xl lg:text-3xl font-bold text-gray-900">
+                <div className="max-w-screen-xl mx-auto">
+                  <div className="flex items-center justify-between mb-16">
+                    <h2 className="text-3xl font-medium text-gray-900 !m-0">
                       Recommended articles
                     </h2>
                     <Link href="/">
-                      <span className="font-semibold text-gray-900 cursor-pointer">
+                      <span className="font-light text-gray-900 cursor-pointer">
                         More articles ➜
                       </span>
                     </Link>
