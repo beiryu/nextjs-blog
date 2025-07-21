@@ -1,22 +1,21 @@
 import { Article } from 'types/article.type';
 import Category from 'components/common/Category';
 import Link from 'next/link';
+import Image from 'next/image';
 import slugify from 'slugify';
 import { getLocalizedDate } from 'utils/datetime';
 import {
-  FacebookShareButton,
-  FacebookIcon,
   TwitterShareButton,
   TwitterIcon,
   LinkedinShareButton,
   LinkedinIcon,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon
+  FacebookShareButton,
+  FacebookIcon
 } from 'next-share';
 import siteData from 'data/site-data';
 import { CONFIGS } from 'config';
-import FallbackImage from 'components/common/FallbackImage';
 import ClapButton from 'components/common/ClapButton';
+import { BackgroundLines } from 'components/common/BackgroundLines';
 
 interface ComponentProps {
   articles: Article[];
@@ -24,72 +23,88 @@ interface ComponentProps {
 }
 
 export default function ArticlePopular({ articles, setSelectedTagId }: ComponentProps) {
-  return (
-    <div className="gap-10 grid grid-cols-1 md:grid-cols-3">
-      {articles.map(article => {
-        const slug = slugify(article.title).toLowerCase();
-        const formattedTime = getLocalizedDate(article?.publishedDate);
-        const fullURL = `${CONFIGS.host}/blog/${slug}`;
+  // Only use the first article
+  const article = articles[0];
 
-        return (
-          <Link
-            href={`/blog/${slug}`}
-            key={article.id}
-            className="p-4 flex flex-col bg-white hover:bg-orange-50 rounded-xl shadow-xl"
-          >
-            <div className="text-center">
-              <p className="text-xl font-semibold text-gray-900">
-                <span className="text-underline-rising">{article.title}</span>
-              </p>
-              <time className="text-xs text-gray-400" dateTime={formattedTime}>
-                {formattedTime}
-              </time>
-            </div>
-            <div className="my-5 space-y-2 flex flex-col items-center">
-              {article.categories.map(category => (
-                <Category
-                  tag={category}
-                  key={category.id}
-                  setSelectedTagId={setSelectedTagId}
-                />
-              ))}
-            </div>
-            <div className="filter contrast-[0.9] overflow-hidden rounded-lg">
-              <FallbackImage
-                className="md:scale-110 xl:scale-100 hover:scale-110 md:hover:scale-125 xl:hover:scale-110"
-                src={article.coverImage}
-                alt={article.title}
-                width={2000}
-                height={2000}
+  if (!article) return null;
+
+  const slug = slugify(article.title).toLowerCase();
+  const formattedTime = getLocalizedDate(article?.publishedDate);
+  const fullURL = `${CONFIGS.host}/blog/${slug}`;
+
+  // Default author
+  const author = {
+    name: 'Beiryu',
+    role: 'Contributor',
+    avatar: siteData.profileUrl
+  };
+
+  return (
+    <BackgroundLines className="max-w-screen-md mx-auto mb-16">
+      {/* Simple card */}
+      <div className="flex flex-col p-6 bg-white rounded-md shadow-md">
+        <time className="text-sm text-text-muted" dateTime={formattedTime}>
+          {formattedTime}
+        </time>
+
+        <Link href={`/blog/${slug}`} className="z-10">
+          <h2 className="text-2xl font-medium text-text-primary line-clamp-2 mt-2">
+            {article.title}
+          </h2>
+        </Link>
+
+        <p className="text-sm text-text-secondary my-4 line-clamp-3">{article.summary}</p>
+
+        <div className="flex flex-wrap gap-2 mb-4">
+          {article.categories.map(category => (
+            <Category
+              tag={category}
+              key={category.id}
+              setSelectedTagId={setSelectedTagId}
+            />
+          ))}
+        </div>
+
+        {/* Author section */}
+        <div className="mt-auto pt-4 border-t border-neutral-divider flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-100">
+              <Image
+                src={author.avatar}
+                alt={author.name}
+                width={32}
+                height={32}
+                className="object-cover w-full h-full"
               />
             </div>
-            <div className="p-4">
-              <p className="mt-3 text-sm text-gray-500 line-clamp-6">{article.summary}</p>
-              <div className="flex flex-row justify-center">
-                <ClapButton pageId={article.id} initialClaps={article.claps} />
-              </div>
+            <div>
+              <p className="text-xs font-medium text-text-primary">{author.name}</p>
+              <p className="text-xs text-text-muted">{author.role}</p>
             </div>
-            <div className="flex flex-row justify-center gap-2">
+          </div>
+
+          <div className="flex items-center justify-between z-10">
+            <div className="flex gap-2">
               <TwitterShareButton url={fullURL} title={article.title}>
-                <TwitterIcon size={20} round />
+                <TwitterIcon size={24} round />
               </TwitterShareButton>
               <LinkedinShareButton url={fullURL}>
-                <LinkedinIcon size={20} round />
+                <LinkedinIcon size={24} round />
               </LinkedinShareButton>
               <FacebookShareButton
                 url={fullURL}
                 quote={article.title}
                 hashtag={`#${siteData.author}`}
               >
-                <FacebookIcon size={20} round />
+                <FacebookIcon size={24} round />
               </FacebookShareButton>
-              <FacebookMessengerShareButton url={fullURL} appId="">
-                <FacebookMessengerIcon size={20} round />
-              </FacebookMessengerShareButton>
             </div>
-          </Link>
-        );
-      })}
-    </div>
+          </div>
+          <div className="z-10">
+            <ClapButton pageId={article.id} initialClaps={article.claps} />
+          </div>
+        </div>
+      </div>
+    </BackgroundLines>
   );
 }

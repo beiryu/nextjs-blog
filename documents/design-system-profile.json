@@ -1,0 +1,332 @@
+{
+  "designSystemProfile": {
+    "name": "Modern Enterprise Content Hub",
+    "version": "1.0.0",
+    "description": "A clean, grid-based content aggregation design system with emphasis on readability and modern UI patterns",
+
+    "layout": {
+      "structure": "grid-based",
+      "containerType": "centered-max-width",
+      "gridSystem": {
+        "type": "responsive-masonry",
+        "columns": {
+          "mobile": 1,
+          "tablet": 2,
+          "desktop": 3,
+          "large": 3
+        },
+        "gap": {
+          "horizontal": "24px",
+          "vertical": "32px"
+        }
+      },
+      "maxWidth": "1200px",
+      "padding": {
+        "horizontal": "20px",
+        "vertical": "40px"
+      }
+    },
+
+    "typography": {
+      "hierarchy": {
+        "h1": {
+          "purpose": "main-title",
+          "fontSize": "48px",
+          "fontWeight": "700",
+          "lineHeight": "1.1",
+          "letterSpacing": "-0.02em"
+        },
+        "h2": {
+          "purpose": "section-title",
+          "fontSize": "24px",
+          "fontWeight": "600",
+          "lineHeight": "1.3"
+        },
+        "h3": {
+          "purpose": "card-title",
+          "fontSize": "18px",
+          "fontWeight": "600",
+          "lineHeight": "1.4"
+        },
+        "body": {
+          "purpose": "description-text",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "1.5"
+        },
+        "caption": {
+          "purpose": "metadata",
+          "fontSize": "12px",
+          "fontWeight": "500",
+          "lineHeight": "1.4"
+        }
+      },
+      "fontFamily": {
+        "primary": "system-ui, -apple-system, sans-serif",
+        "fallback": "Arial, sans-serif"
+      }
+    },
+
+    "colorPalette": {
+      "primary": {
+        "background": "#ffffff",
+        "surface": "#f8f9fa",
+        "cardBackground": "#ffffff"
+      },
+      "text": {
+        "primary": "#1a1a1a",
+        "secondary": "#6b7280",
+        "muted": "#9ca3af"
+      },
+      "accent": {
+        "green": "#10b981",
+        "blue": "#3b82f6",
+        "purple": "#8b5cf6",
+        "orange": "#f59e0b",
+        "red": "#ef4444"
+      },
+      "neutral": {
+        "border": "#e5e7eb",
+        "divider": "#f3f4f6",
+        "hover": "#f9fafb"
+      }
+    },
+
+    "components": {
+      "header": {
+        "structure": "centered-navigation",
+        "height": "80px",
+        "background": "transparent",
+        "elements": {
+          "logo": {
+            "position": "left",
+            "type": "text-logo"
+          },
+          "navigation": {
+            "position": "center",
+            "type": "horizontal-tabs",
+            "itemSpacing": "32px"
+          },
+          "cta": {
+            "position": "right",
+            "type": "button",
+            "style": "filled"
+          }
+        }
+      },
+
+      "heroSection": {
+        "structure": "centered-content",
+        "spacing": {
+          "top": "80px",
+          "bottom": "80px"
+        },
+        "elements": {
+          "title": {
+            "maxWidth": "600px",
+            "textAlign": "center"
+          },
+          "subtitle": {
+            "maxWidth": "500px",
+            "textAlign": "center",
+            "marginTop": "16px"
+          }
+        }
+      },
+
+      "contentCard": {
+        "structure": "vertical-stack",
+        "dimensions": {
+          "minHeight": "300px",
+          "aspectRatio": "variable"
+        },
+        "styling": {
+          "background": "#ffffff",
+          "border": "1px solid #e5e7eb",
+          "borderRadius": "12px",
+          "padding": "24px",
+          "shadow": "0 1px 3px rgba(0, 0, 0, 0.1)",
+          "hoverShadow": "0 4px 12px rgba(0, 0, 0, 0.15)"
+        },
+        "elements": {
+          "image": {
+            "position": "top",
+            "borderRadius": "8px",
+            "aspectRatio": "16:9",
+            "objectFit": "cover"
+          },
+          "categoryTag": {
+            "position": "below-image",
+            "style": "pill",
+            "fontSize": "12px",
+            "padding": "4px 12px",
+            "borderRadius": "16px",
+            "marginBottom": "12px"
+          },
+          "title": {
+            "marginBottom": "8px",
+            "maxLines": 2
+          },
+          "description": {
+            "marginBottom": "16px",
+            "maxLines": 3,
+            "color": "text-secondary"
+          },
+          "metadata": {
+            "position": "bottom",
+            "layout": "horizontal",
+            "justifyContent": "space-between",
+            "alignItems": "center"
+          }
+        }
+      },
+
+      "categoryTag": {
+        "variants": {
+          "green": {
+            "background": "#ecfdf5",
+            "color": "#065f46",
+            "border": "1px solid #a7f3d0"
+          },
+          "blue": {
+            "background": "#eff6ff",
+            "color": "#1e40af",
+            "border": "1px solid #93c5fd"
+          },
+          "purple": {
+            "background": "#f3f4f6",
+            "color": "#6b7280",
+            "border": "1px solid #d1d5db"
+          },
+          "orange": {
+            "background": "#fffbeb",
+            "color": "#92400e",
+            "border": "1px solid #fcd34d"
+          }
+        }
+      },
+
+      "button": {
+        "variants": {
+          "primary": {
+            "background": "#1a1a1a",
+            "color": "#ffffff",
+            "border": "none",
+            "borderRadius": "8px",
+            "padding": "12px 24px",
+            "fontSize": "14px",
+            "fontWeight": "500"
+          },
+          "secondary": {
+            "background": "transparent",
+            "color": "#1a1a1a",
+            "border": "1px solid #e5e7eb",
+            "borderRadius": "8px",
+            "padding": "12px 24px"
+          }
+        }
+      }
+    },
+
+    "spacing": {
+      "scale": [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80],
+      "semanticSpacing": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px",
+        "2xl": "48px"
+      }
+    },
+
+    "animations": {
+      "transitions": {
+        "default": "all 0.2s ease-in-out",
+        "hover": "transform 0.2s ease-in-out",
+        "shadow": "box-shadow 0.2s ease-in-out"
+      },
+      "hoverEffects": {
+        "card": {
+          "transform": "translateY(-2px)",
+          "shadowIntensity": "increased"
+        },
+        "button": {
+          "opacity": "0.9"
+        }
+      }
+    },
+
+    "breakpoints": {
+      "mobile": "320px",
+      "tablet": "768px",
+      "desktop": "1024px",
+      "large": "1440px"
+    },
+
+    "patterns": {
+      "contentAggregation": {
+        "description": "Grid-based layout for displaying multiple content items",
+        "characteristics": [
+          "Masonry/Pinterest-style grid",
+          "Consistent card styling with variable heights",
+          "Clear visual hierarchy within cards",
+          "Hover interactions for engagement"
+        ]
+      },
+      "informationDensity": {
+        "description": "Balanced information presentation",
+        "characteristics": [
+          "Adequate white space between elements",
+          "Clear separation between content sections",
+          "Scannable typography hierarchy",
+          "Strategic use of color for categorization"
+        ]
+      },
+      "modernMinimalism": {
+        "description": "Clean, contemporary aesthetic",
+        "characteristics": [
+          "Subtle shadows and borders",
+          "Rounded corners for friendliness",
+          "Limited color palette with strategic accents",
+          "High contrast for accessibility"
+        ]
+      }
+    },
+
+    "accessibility": {
+      "colorContrast": {
+        "minimum": "4.5:1",
+        "enhanced": "7:1"
+      },
+      "focusStates": {
+        "outline": "2px solid #3b82f6",
+        "outlineOffset": "2px"
+      },
+      "semanticMarkup": {
+        "headingHierarchy": "progressive-h1-h6",
+        "landmarks": "header, main, navigation, section",
+        "altText": "descriptive-for-images"
+      }
+    },
+
+    "usageGuidelines": {
+      "cardContent": {
+        "titleLength": "1-2 lines maximum",
+        "descriptionLength": "2-3 lines maximum",
+        "imageRequirement": "high-quality, relevant visuals",
+        "categoryConsistency": "use predefined category tags"
+      },
+      "gridLayout": {
+        "minCards": "6 for effective grid display",
+        "maxCards": "no strict limit, but consider pagination",
+        "cardOrdering": "chronological or relevance-based"
+      },
+      "responsiveBehavior": {
+        "mobile": "single column, larger touch targets",
+        "tablet": "two columns, maintain readability",
+        "desktop": "three columns, optimal information density"
+      }
+    }
+  }
+}

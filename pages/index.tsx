@@ -17,34 +17,50 @@ export default function Index({ popularArticles, normalArticles, categories }) {
 
   return (
     <Layout>
-      <SegmentWrapper>
-        <HeroHeader />
-      </SegmentWrapper>
-      <SegmentWrapper>
-        <div className="flex flex-wrap justify-center gap-4 py-6">
-          {categories.map(tag => (
-            <Category
-              tag={tag}
-              key={tag.id}
-              selectedTagId={selectedTagId}
+      {/* Hero Section */}
+      <HeroHeader />
+
+      {/* Featured Article Section */}
+      <section className="">
+        <Container>
+          {popularArticles.length > 0 && (
+            <ArticlePopular
+              articles={popularArticles}
               setSelectedTagId={setSelectedTagId}
             />
-          ))}
-        </div>
-      </SegmentWrapper>
-      <div className="my-14 px-10">
-        <ArticlePopular articles={popularArticles} setSelectedTagId={setSelectedTagId} />
-      </div>
-      <SegmentWrapper>
-        <Container>
-          <div className="py-8">
+          )}
+        </Container>
+      </section>
+
+      {/* Category Filters */}
+      <section className="">
+        <SegmentWrapper>
+          <Container>
+            <div className="flex flex-wrap justify-center gap-4 py-8">
+              {categories.map(tag => (
+                <Category
+                  tag={tag}
+                  key={tag.id}
+                  selectedTagId={selectedTagId}
+                  setSelectedTagId={setSelectedTagId}
+                />
+              ))}
+            </div>
+          </Container>
+        </SegmentWrapper>
+      </section>
+
+      {/* Main Content Grid */}
+      <section className="py-16">
+        <SegmentWrapper>
+          <Container>
             <ArticleList
               articles={filteredArticles}
               setSelectedTagId={setSelectedTagId}
             />
-          </div>
-        </Container>
-      </SegmentWrapper>
+          </Container>
+        </SegmentWrapper>
+      </section>
     </Layout>
   );
 }

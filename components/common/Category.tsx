@@ -30,27 +30,29 @@ export default function Category(props: ComponentProps) {
   return (
     <div
       key={tag.id}
-      onClick={() => handleTagClick(tag.id)}
-      className={`${
-        selectedTagId === tag.id && 'ring-2 ring-slate-400 bg-slate-100'
-      } inline-flex items-center px-3 py-1.5 mr-2 bg-slate-200 rounded-xl cursor-pointer hover:bg-slate-100 gap-2 shadow-sm drop-shadow-lg w-fit`}
+      onClick={e => handleTagClick(tag.id)}
+      className={`
+        inline-flex items-center px-3 py-1 rounded-md text-xs font-medium
+        border cursor-pointer transition-all duration-200
+        ${selectedTagId === tag.id ? 'ring-2 ring-gray-400' : ''}
+      `}
     >
-      <div className="rounded-xl w-6 h-6 p-1 bg-orange-100 shadow-md flex justify-center items-center">
-        {tag.name === 'Side hustle' && <BirdIcon />}
-        {tag.name === 'AI' && <BrainCircuitIcon />}
-        {tag.name === 'DevOps' && <ServerCogIcon />}
-        {tag.name === 'Frontend' && <CodeIcon />}
-        {tag.name === 'Backend' && <TerminalIcon />}
-        {tag.name === 'Tutorials' && <BookOpenIcon />}
-        {tag.name === 'Crypto' && <BitcoinIcon />}
-        {tag.name === 'Architecture' && <NetworkIcon />}
-        {tag.name === 'Personal Stories' && <UserRoundIcon />}
-        {tag.name === 'Caching' && <DatabaseZapIcon />}
-        {tag.name === 'Career' && <SquareGanttChartIcon />}
-        {tag.name === 'AWS' && <ServerIcon />}
-      </div>
-      <span className="text-sm font-medium">{tag.name || 'All'}</span>
-      <span className="text-xs font-thin">{tag.number}</span>
+      <span className="flex items-center gap-1.5">
+        {tag.name === 'Side hustle' && <BirdIcon size={12} />}
+        {tag.name === 'AI' && <BrainCircuitIcon size={12} />}
+        {tag.name === 'DevOps' && <ServerCogIcon size={12} />}
+        {tag.name === 'Frontend' && <CodeIcon size={12} />}
+        {tag.name === 'Backend' && <TerminalIcon size={12} />}
+        {tag.name === 'Tutorials' && <BookOpenIcon size={12} />}
+        {tag.name === 'Crypto' && <BitcoinIcon size={12} />}
+        {tag.name === 'Architecture' && <NetworkIcon size={12} />}
+        {tag.name === 'Personal Stories' && <UserRoundIcon size={12} />}
+        {tag.name === 'Caching' && <DatabaseZapIcon size={12} />}
+        {tag.name === 'Career' && <SquareGanttChartIcon size={12} />}
+        {tag.name === 'AWS' && <ServerIcon size={12} />}
+        {tag.name}
+        {tag.number && <span className="text-xs opacity-70">({tag.number})</span>}
+      </span>
     </div>
   );
 }

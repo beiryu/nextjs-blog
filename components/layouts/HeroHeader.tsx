@@ -3,38 +3,34 @@ import siteData from 'data/site-data';
 import Container from './Container';
 import SubscribeInput from '../subscribes/SubscribeInput';
 import { CONFIGS } from 'config';
+import { SegmentWrapper } from 'layouts/SegmentWrapper';
 
 export default function HeroHeader() {
   return (
-    <div className="pb-24 text-center bg-gray-100">
-      <Container>
-        {siteData?.profileUrl && (
-          <Image
-            src={siteData.profileUrl}
-            className="w-24 h-24 mx-auto rounded-full"
-            alt="profile"
-            width={500}
-            height={500}
-          />
-        )}
-        <div className="my-4 text-5xl font-extrabold text-slate-900">
-          <span className="text-underline-rising">{siteData.headerTitle}</span>
-        </div>
-        <div className="max-w-2xl mx-auto text-xl font-semibold text-slate-950">
-          {siteData.headerDescription}
-        </div>
-        <div className="mx-auto mt-4 text-2xl font-semibold text-slate-950">
-          <span className="text-underline-rising">Full-stack</span>,{' '}
-          <span className="text-underline-rising">Algorithms</span> &{' '}
-          <span className="text-underline-rising">System Design</span>
-        </div>
-
-        {CONFIGS.convertKitFromID! && CONFIGS.convertKitApiKey! && (
-          <div className="mt-12">
-            <SubscribeInput />
+    <section className="py-20 text-center">
+      <SegmentWrapper>
+        <Container>
+          <div className="max-w-[600px] mx-auto">
+            {siteData?.profileUrl && (
+              <Image
+                src={siteData.profileUrl}
+                className="w-24 h-24 mx-auto rounded-full mb-6"
+                alt="profile"
+                width={500}
+                height={500}
+              />
+            )}
+            <h1 className="text-4xl md:text-5xl font-medium text-text-primary mb-4 leading-tight tracking-tight">
+              {siteData.headerTitle}
+            </h1>
+            <div className="mx-auto text-sm font-light font-mono text-text-primary mb-10">
+              <span className="mr-2 text-accent-blue">Full-stack</span>
+              <span className="mr-2 text-accent-green">Algorithms</span>
+              <span className="text-accent-purple">System Design</span>
+            </div>
           </div>
-        )}
-      </Container>
-    </div>
+        </Container>
+      </SegmentWrapper>
+    </section>
   );
 }
