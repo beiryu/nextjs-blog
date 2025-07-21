@@ -9,11 +9,11 @@ const Socials = dynamic(() => import('components/common/Socials'), {
 
 export default function Navbar() {
   return (
-    <div className="fixed z-10 w-full bg-white border-b">
+    <div className="fixed z-20 w-full top-4 px-4">
       <Container>
-        <div className="flex justify-between w-full py-4 ">
+        <div className="flex justify-between max-w-screen-tablet mx-auto py-4 px-6 bg-white rounded-full shadow-md">
           <Link href="/" passHref>
-            <div className="text-xl font-bold cursor-pointer">{siteData.author}</div>
+            <div className="text-xl font-light cursor-pointer">{siteData.author}</div>
           </Link>
           <Socials />
         </div>

@@ -1,7 +1,7 @@
 const siteData = {
-  title: 'Beiryu Blog',
-  author: 'Beiryu Blog',
-  headerTitle: 'Welcome To Beiryu Blog',
+  title: 'Beiryu',
+  author: 'Beiryu',
+  headerTitle: 'Welcome To Beiryu',
   profileUrl: '/logos/logo-primary.png',
   headerDescription: 'Develop software with minimal effort',
   footerText: '© All rights reserved',
