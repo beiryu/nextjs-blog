@@ -22,7 +22,7 @@ export function Layout(props) {
     <>
       <MetaHead {...metaHeadProps} />
       <Header />
-      <div className="pt-24 pb-14 bg-slate-100 min-h-screen">
+      <div className="pt-24 pb-14 bg-gray-100 min-h-screen">
         <div className="container mx-auto">
           <ChatbotProvider>
             {children}
