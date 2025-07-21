@@ -12,7 +12,7 @@ export default function Privacy() {
       <SegmentWrapper>
         <Container>
           <div className="py-6">
-            <div className="text-4xl font-bold">
+            <div className="text-4xl font-medium">
               <span className="text-underline-rising">Privacy Policy</span>
             </div>
             <div className="mt-6 border-t w-full"></div>

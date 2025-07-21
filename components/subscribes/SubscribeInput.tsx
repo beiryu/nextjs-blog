@@ -50,7 +50,7 @@ export default function SubscribeInput() {
           <input
             {...register('email')}
             type="email"
-            className="w-full px-5 py-3 text-base font-bold text-slate-700 placeholder-slate-600 border-2 border-slate-700 bord rounded-md shadow-sm"
+            className="w-full px-5 py-3 text-base font-medium text-slate-700 placeholder-slate-600 rounded-md shadow-sm"
             placeholder="Enter your email"
           />
         </div>
@@ -67,7 +67,7 @@ export default function SubscribeInput() {
       {formState === 'success' ? (
         <div
           onClick={fire}
-          className="mt-8 text-sm font-semibold text-gray-500 cursor-pointer"
+          className="mt-8 text-sm font-medium text-gray-500 cursor-pointer"
         >
           🎉 Give me more confetti
         </div>
