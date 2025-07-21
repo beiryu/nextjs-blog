@@ -13,7 +13,7 @@ export default function Text({ text }) {
       <span
         key={index}
         className={[
-          bold ? 'font-bold' : '',
+          bold ? 'font-semibold' : '',
           italic ? 'italic' : '',
           code ? 'font-mono bg-gray-100 rounded px-1 py-0.5' : '',
           strikethrough ? 'line-through' : '',

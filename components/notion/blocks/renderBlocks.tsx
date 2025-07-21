@@ -21,7 +21,7 @@ export function renderBlocks(block) {
       );
     case 'heading_1':
       return (
-        <div className="text-4xl font-bold mt-12 mb-4">
+        <div className="text-4xl font-medium mt-12 mb-4">
           <AnchorLink text={value.rich_text[0].plain_text}>
             <Text text={value.rich_text} />
           </AnchorLink>
@@ -29,7 +29,7 @@ export function renderBlocks(block) {
       );
     case 'heading_2':
       return (
-        <div className="text-3xl font-bold mt-10 mb-3">
+        <div className="text-3xl font-medium mt-10 mb-3">
           <AnchorLink text={value.rich_text[0].plain_text}>
             <Text text={value.rich_text} />
           </AnchorLink>
@@ -37,7 +37,7 @@ export function renderBlocks(block) {
       );
     case 'heading_3':
       return (
-        <div className="text-2xl font-bold mt-8 mb-3">
+        <div className="text-2xl font-medium mt-8 mb-3">
           <AnchorLink text={value.rich_text[0].plain_text}>
             <Text text={value.rich_text} />
           </AnchorLink>

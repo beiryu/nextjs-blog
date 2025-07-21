@@ -60,7 +60,7 @@ const ArticlePage = ({
                 <div className="flex items-center justify-center mb-4 space-x-2 text-sm text-gray-500">
                   <div className="">{publishedOn}</div>
                 </div>
-                <div className="font-extrabold tracking-wide leading-8 text-gray-900 text-w-4xl sm:text-4xl">
+                <div className="font-medium tracking-wide leading-8 text-gray-900 text-w-4xl sm:text-4xl">
                   {title}
                 </div>
                 <div className="max-w-3xl mx-auto mt-3 text-lg font-extralight leading-8 text-gray-500 sm:mt-4">
