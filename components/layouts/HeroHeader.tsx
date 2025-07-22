@@ -4,6 +4,7 @@ import Container from './Container';
 import SubscribeInput from '../subscribes/SubscribeInput';
 import { CONFIGS } from 'config';
 import { SegmentWrapper } from 'layouts/SegmentWrapper';
+import TextType from 'components/common/TextType';
 
 export default function HeroHeader() {
   return (
@@ -24,9 +25,14 @@ export default function HeroHeader() {
               {siteData.headerTitle}
             </h1>
             <div className="mx-auto text-sm font-light font-mono text-text-primary mb-10">
-              <span className="mr-2 text-accent-blue">Full-stack</span>
-              <span className="mr-2 text-accent-green">Algorithms</span>
-              <span className="text-accent-purple">System Design</span>
+              <TextType
+                text={['Full-stack developer', 'Algorithms', 'System Design']}
+                typingSpeed={75}
+                pauseDuration={1500}
+                showCursor={true}
+                cursorCharacter="_"
+                textColors={['#000000']}
+              />
             </div>
           </div>
         </Container>

@@ -5,7 +5,7 @@
 
 @layer components {
   .text-underline-rising {
-    @apply rounded-sm bg-gradient-to-r from-slate-200 to-slate-300 hover:from-slate-300 hover:to-slate-300 bg-no-repeat [background-position:0_99%] [background-size:100%_0.3em] motion-safe:transition-all motion-safe:duration-200 hover:[background-size:100%_100%] focus:[background-size:100%_100%];
+    @apply rounded-sm bg-gradient-to-r from-stone-200 to-stone-300 hover:from-stone-300 hover:to-stone-300 bg-no-repeat [background-position:0_99%] [background-size:100%_0.3em] motion-safe:transition-all motion-safe:duration-200 hover:[background-size:100%_100%] focus:[background-size:100%_100%];
   }
 }
 

@@ -59,7 +59,7 @@ export default function CommentSection({ articleId }: CommentSectionProps) {
               value={author}
               onChange={e => setAuthor(e.target.value)}
               placeholder="Enter your nickname"
-              className="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 transition-all"
+              className="w-full px-4 py-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-stone-200 focus:outline-none focus:ring-0"
               required
             />
           </div>
@@ -75,7 +75,7 @@ export default function CommentSection({ articleId }: CommentSectionProps) {
               value={content}
               onChange={e => setContent(e.target.value)}
               rows={6}
-              className="w-full p-4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 transition-all"
+              className="w-full p-4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-stone-200 focus:outline-none"
               placeholder="Share your thoughts..."
               required
             />
@@ -83,7 +83,7 @@ export default function CommentSection({ articleId }: CommentSectionProps) {
           <button
             type="submit"
             disabled={isAddingComment}
-            className="inline-flex items-center py-3 px-5 text-sm font-medium text-center bg-gray-900 text-white rounded-lg focus:ring-2 transition-all disabled:opacity-50 disabled:hover:bg-gray-500"
+            className="inline-flex items-center py-3 px-5 text-sm font-medium text-center bg-stone-600 hover:bg-stone-700 text-white rounded-lg focus:ring-2 transition-all disabled:opacity-50 disabled:hover:bg-stone-500"
           >
             {isAddingComment ? 'Posting...' : 'Post comment'}
           </button>
@@ -106,26 +106,28 @@ export default function CommentSection({ articleId }: CommentSectionProps) {
           </div>
         ) : (
           <div className="space-y-4">
-            {comments?.map(comment => (
-              <div
-                key={comment.id}
-                className="text-base bg-white rounded-lg border border-gray-200 p-4"
-              >
-                <div className="flex justify-between items-center mb-2">
-                  <div className="flex items-center">
-                    <p className="inline-flex items-center mr-3 text-gray-900 font-semibold">
-                      {comment.author}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      <time dateTime={comment.createdAt} title={comment.createdAt}>
-                        {getRelativeTimeString(comment.createdAt)}
-                      </time>
-                    </p>
+            {comments &&
+              Array.isArray(comments) &&
+              comments.map(comment => (
+                <div
+                  key={comment.id}
+                  className="text-base bg-white rounded-lg border border-gray-200 p-4"
+                >
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="flex items-center">
+                      <p className="inline-flex items-center mr-3 text-gray-900 font-semibold">
+                        {comment.author}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        <time dateTime={comment.createdAt} title={comment.createdAt}>
+                          {getRelativeTimeString(comment.createdAt)}
+                        </time>
+                      </p>
+                    </div>
                   </div>
+                  <p className="text-gray-500 whitespace-pre-wrap">{comment.content}</p>
                 </div>
-                <p className="text-gray-500 whitespace-pre-wrap">{comment.content}</p>
-              </div>
-            ))}
+              ))}
           </div>
         )}
       </div>

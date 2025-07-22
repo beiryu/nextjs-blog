@@ -69,7 +69,7 @@ const ArticlePage = ({
               </div>
             </div>
 
-            <div className="max-w-screen-xl px-6 my-10 mx-auto space-y-8 md:px-8 border bg-white rounded-lg">
+            <div className="max-w-screen-xl px-6 my-10 mx-auto space-y-8 md:px-8">
               {content.map(block => (
                 <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
               ))}
