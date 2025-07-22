@@ -33,7 +33,7 @@ export default function Category(props: ComponentProps) {
       onClick={e => handleTagClick(tag.id)}
       className={`
         inline-flex items-center px-3 py-1 rounded-md text-xs font-medium
-        border cursor-pointer transition-all duration-200
+        border border-gray-300 cursor-pointer transition-all duration-200
         ${selectedTagId === tag.id ? 'ring-2 ring-gray-400' : ''}
       `}
     >

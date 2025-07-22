@@ -10,58 +10,74 @@ import { CONFIGS } from 'config';
 import { SegmentWrapper } from 'layouts/SegmentWrapper';
 import { Article } from 'types/article.type';
 import ArticlePopular from 'components/articles/ArticlePopular';
+import { AuroraBackground } from 'components/common/AuroraBackground';
+import { motion } from 'framer-motion';
 
 export default function Index({ popularArticles, normalArticles, categories }) {
   const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
   const filteredArticles = filterArticles(normalArticles, selectedTagId);
 
   return (
-    <Layout>
-      {/* Hero Section */}
-      <HeroHeader />
+    <>
+      <AuroraBackground className="h-screen">
+        <motion.div
+          initial={{ opacity: 0.0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: 'easeInOut'
+          }}
+          className="relative flex flex-col gap-4 items-center justify-center px-4"
+        >
+          {/* Hero Section */}
+          <HeroHeader />
 
-      {/* Featured Article Section */}
-      <section className="">
-        <Container>
-          {popularArticles.length > 0 && (
-            <ArticlePopular
-              articles={popularArticles}
-              setSelectedTagId={setSelectedTagId}
-            />
-          )}
-        </Container>
-      </section>
-
-      {/* Category Filters */}
-      <section className="">
-        <SegmentWrapper>
-          <Container>
-            <div className="flex flex-wrap justify-center gap-4 py-8">
-              {categories.map(tag => (
-                <Category
-                  tag={tag}
-                  key={tag.id}
-                  selectedTagId={selectedTagId}
+          {/* Featured Article Section */}
+          <section className="">
+            <Container>
+              {popularArticles.length > 0 && (
+                <ArticlePopular
+                  articles={popularArticles}
                   setSelectedTagId={setSelectedTagId}
                 />
-              ))}
-            </div>
-          </Container>
-        </SegmentWrapper>
-      </section>
+              )}
+            </Container>
+          </section>
 
-      {/* Main Content Grid */}
-      <section className="py-16">
-        <SegmentWrapper>
-          <Container>
-            <ArticleList
-              articles={filteredArticles}
-              setSelectedTagId={setSelectedTagId}
-            />
-          </Container>
-        </SegmentWrapper>
-      </section>
-    </Layout>
+          {/* Category Filters */}
+          <section className="">
+            <SegmentWrapper>
+              <Container>
+                <div className="flex flex-wrap justify-center gap-4 py-8">
+                  {categories.map(tag => (
+                    <Category
+                      tag={tag}
+                      key={tag.id}
+                      selectedTagId={selectedTagId}
+                      setSelectedTagId={setSelectedTagId}
+                    />
+                  ))}
+                </div>
+              </Container>
+            </SegmentWrapper>
+          </section>
+        </motion.div>
+      </AuroraBackground>
+      <Layout>
+        {/* Main Content Grid */}
+        <section>
+          <SegmentWrapper>
+            <Container>
+              <ArticleList
+                articles={filteredArticles}
+                setSelectedTagId={setSelectedTagId}
+              />
+            </Container>
+          </SegmentWrapper>
+        </section>
+      </Layout>
+    </>
   );
 }
 

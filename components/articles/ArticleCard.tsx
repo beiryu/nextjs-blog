@@ -18,8 +18,8 @@ export default function ArticleCard({ article, setSelectedTagId }: Props) {
   const formattedTime = getLocalizedDate(article?.publishedDate);
 
   const author = {
-    name: "Beiryu",
-    role: "Contributor",
+    name: 'Beiryu',
+    role: 'Contributor',
     avatar: siteData.profileUrl
   };
 
@@ -27,31 +27,31 @@ export default function ArticleCard({ article, setSelectedTagId }: Props) {
     <>
       <div className="flex flex-col h-full bg-white border border-neutral-border rounded-md hover:shadow-md transition-all duration-200 overflow-hidden">
         <Link href={`/blog/${slug}`}>
-        <div className="relative aspect-video overflow-hidden">
-          <FallbackImage
-            src={article.coverImage}
-            alt={article.title}
-            width={2000}
-            height={2000}
-            className="object-cover w-full h-full"
-          />
-        </div>
+          <div className="relative aspect-video overflow-hidden">
+            <FallbackImage
+              src={article.coverImage}
+              alt={article.title}
+              width={2000}
+              height={2000}
+              className="object-cover w-full h-full"
+            />
+          </div>
         </Link>
         <div className="flex flex-col flex-1 p-4">
           <time className="text-xs text-text-muted" dateTime={formattedTime}>
             {formattedTime}
           </time>
           <Link href={`/blog/${slug}`}>
-          <h3 className="text-2xl font-medium text-text-primary line-clamp-2">
-            {article.title}
-          </h3>
+            <h3 className="text-2xl font-medium text-text-primary line-clamp-2">
+              {article.title}
+            </h3>
           </Link>
-          
+
           {/* Description */}
           <p className="text-sm text-text-secondary mb-4 line-clamp-3">
             {article.summary}
           </p>
-          
+
           {/* Categories */}
           <div className="flex flex-wrap gap-2 mb-4">
             {article.categories.slice(0, 3).map(category => (
@@ -62,12 +62,12 @@ export default function ArticleCard({ article, setSelectedTagId }: Props) {
               />
             ))}
           </div>
-          
+
           {/* Author Section */}
           <div className="mt-auto pt-4 border-t border-neutral-divider flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-100">
-                <Image 
+                <Image
                   src={author.avatar}
                   alt={author.name}
                   width={32}
@@ -80,7 +80,7 @@ export default function ArticleCard({ article, setSelectedTagId }: Props) {
                 <p className="text-xs text-text-muted">{author.role}</p>
               </div>
             </div>
-            
+
             <ClapButton pageId={article.id} initialClaps={article.claps} />
           </div>
         </div>

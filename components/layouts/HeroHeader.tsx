@@ -11,7 +11,7 @@ export default function HeroHeader() {
       <SegmentWrapper>
         <Container>
           <div className="max-w-[600px] mx-auto">
-            {siteData?.profileUrl && (
+            {/* {siteData?.profileUrl && (
               <Image
                 src={siteData.profileUrl}
                 className="w-24 h-24 mx-auto rounded-full mb-6"
@@ -19,7 +19,7 @@ export default function HeroHeader() {
                 width={500}
                 height={500}
               />
-            )}
+            )} */}
             <h1 className="text-4xl md:text-5xl font-medium text-text-primary mb-4 leading-tight tracking-tight">
               {siteData.headerTitle}
             </h1>
