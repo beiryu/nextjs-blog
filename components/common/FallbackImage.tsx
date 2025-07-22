@@ -8,9 +8,17 @@ interface FallbackImageProps {
   width: number;
   height: number;
   className?: string;
+  priority?: boolean; // Add priority option for above-the-fold images
 }
 
-const FallbackImage = ({ src, alt, width, height, className }: FallbackImageProps) => {
+const FallbackImage = ({
+  src,
+  alt,
+  width,
+  height,
+  className,
+  priority = false
+}: FallbackImageProps) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -34,13 +42,17 @@ const FallbackImage = ({ src, alt, width, height, className }: FallbackImageProp
         width={width}
         height={height}
         quality={75}
-        loading="lazy"
+        priority={priority} // Use priority for important above-the-fold images
+        loading={priority ? undefined : 'lazy'} // Only use lazy loading when priority is false
         className={`
           duration-700 ease-in-out aspect-video object-contain 
           ${loading ? 'scale-110 blur-2xl ' : `scale-100 blur-0 ${className}`}
         `}
         onError={() => setError(true)}
         onLoad={() => setLoading(false)}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Add responsive sizes
+        placeholder="blur" // Enable blur placeholder
+        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" // Tiny transparent placeholder
       />
     </div>
   );

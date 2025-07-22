@@ -81,6 +81,7 @@ export default function ArticlePopular({ articles, setSelectedTagId }: Component
                   width={32}
                   height={32}
                   className="object-cover w-full h-full"
+                  priority={true} // Add priority since this is a visible above-the-fold element
                 />
               </div>
               <div>

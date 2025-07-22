@@ -53,6 +53,7 @@ const ArticlePage = ({
                 alt={title}
                 width={2000}
                 height={2000}
+                priority={true} // Add priority loading for blog post cover image
               />
             </div>
             <div className="px-6 pt-24 sm:pt-40 md:pt-52 pb-48 mx-auto -mb-48 text-center md:pb-96 md:-mb-96">

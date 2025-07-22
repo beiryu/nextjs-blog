@@ -34,6 +34,7 @@ export default function ArticleCard({ article, setSelectedTagId }: Props) {
               width={2000}
               height={2000}
               className="object-cover w-full h-full"
+              priority={true} // Use priority loading for above-the-fold images
             />
           </div>
         </Link>
@@ -73,6 +74,7 @@ export default function ArticleCard({ article, setSelectedTagId }: Props) {
                   width={32}
                   height={32}
                   className="object-cover w-full h-full"
+                  priority={true} // Also prioritize author avatar if the card is prioritized
                 />
               </div>
               <div>
